@@ -4,24 +4,55 @@ import { Link, useHistory } from "react-router-dom";
 
 // Project files
 import InputFields from "components/InputFields";
-import Footer from "components/Footer";
+// import Footer from "components/Footer";
 import Checkbox from "components/Checkbox";
 import fields from "data/fields-signup.json";
+import { createAccount } from "scripts/authentification";
+import { createDocumentWithId } from "scripts/firestore";
+import { useUser } from "state/UserProvider";
 
 export default function SignUp() {
+  // Global state
+  const { user, setUser, setIsLogged } = useUser();
+  const history = useHistory();
+
   // Local state
   const [form, setForm] = useState({
-    name: "",
+    firstName: "",
     surname: "",
     email: "",
     password: "",
   });
-  const [errors, setErrors] = useState({});
+  // const [errors, setErrors] = useState({});
+
+  const [errorMessage, setErrorMessage] = useState("");
+
+  // Methods
+  async function onSubmit(event) {
+    event.preventDefault();
+    setErrorMessage("");
+    const account = await createAccount(form.email, form.password);
+
+    account.isCreated ? onSuccess(account.payload) : onFailure(account.payload);
+  }
+
+  async function onSuccess(uid) {
+    const newUser = { name: `${form.firstName} ${form.surname}`};
+
+    await createDocumentWithId("users", uid, newUser);
+    setUser(newUser);
+    setIsLogged(true);
+    history.push("/");
+  }
+
+  function onFailure(message) {
+    setErrorMessage(message);
+  }
 
   return (
     <main className="page signup-page">
       <div className="center-container">
-        <form className="signup-form">
+        <form className="signup-form" onSubmit={onSubmit}>
           <div className="signup-form-container">
             <h1>Create a password to start your membership</h1>
             <p className="context-row">
@@ -32,7 +63,7 @@ export default function SignUp() {
               <InputFields
                 fields={fields}
                 state={[form, setForm]}
-                errors={errors}
+                errors={errorMessage}
               />
             </div>
             <div className="signup-form-help">

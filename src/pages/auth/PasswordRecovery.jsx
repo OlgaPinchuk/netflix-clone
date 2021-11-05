@@ -1,24 +1,49 @@
 // NPM packages
 import { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 // Project files
 import InputFields from "components/InputFields";
 import Footer from "components/Footer";
-import Checkbox from "components/Checkbox";
 import fields from "data/fields-password-recovery.json";
+import { recoverPassword } from "scripts/authentification";
 
 export default function PasswordRecovery() {
+  // Global state
+  const history = useHistory();
+
   // Local state
-  const [form, setForm] = useState({
-    email: "",
-  });
-  const [errors, setErrors] = useState({});
+  const [form, setForm] = useState({ email: "" });
+  const [error, setError] = useState({});
+  const [message, setMessage] = useState("");
+
+  // Methods
+  function onChange(key, value) {
+    const field = { [key]: value };
+    setForm({ ...form, ...field });
+  }
+
+  async function onSubmit(e) {
+    e.preventDefault();
+    setMessage("");
+    const account = await recoverPassword(form.email);
+    account.isReset ? onSuccess(account.payload) : onFailure(account.payload);
+  }
+
+  async function onSuccess(message) {
+    setMessage(message);
+    alert(message);
+    history.push("/");
+  }
+
+  function onFailure(errorMessage) {
+    setMessage(errorMessage);
+  }
 
   return (
     <main className="page password-recovery-page">
       <div className="center-container">
-        <form className="recovery-form">
+        <form className="recovery-form" onSubmit={onSubmit}>
           <div className="recovery-form-container">
             <h1>Forgot Email/Password</h1>
             <p className="context-row">
@@ -32,9 +57,10 @@ export default function PasswordRecovery() {
               <InputFields
                 fields={fields}
                 state={[form, setForm]}
-                errors={errors}
+                onChange={onChange}
               />
             </div>
+            <small className="input-error">{message}</small>
             <button className="button recover-button">Email Me</button>
           </div>
         </form>

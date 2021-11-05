@@ -2,19 +2,18 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // Project files
-import Login from "pages/auth/Login";
-import SignUp from "pages/auth/SignUp";
-import PasswordRecovery from "pages/auth/PasswordRecovery";
+import { useUser } from "state/UserProvider";
+import Logged from "routes/Logged";
+import Unlogged from "routes/Unlogged";
 
 export default function App() {
+  // Global state
+  const { isLogged } = useUser();
+
   return (
     <div className="App">
       <BrowserRouter>
-        <Switch>
-          <Route path="/" exact component={Login} />
-          <Route path="/signup" component={SignUp} />
-          <Route path="/recovery" component={PasswordRecovery} />
-        </Switch>
+        <Switch>{isLogged ? <Logged /> : <Unlogged />}</Switch>
       </BrowserRouter>
     </div>
   );

@@ -2,7 +2,7 @@
 import InputField from "components/InputField";
 import { useState } from "react";
 
-export default function InputFields({ fields, state, errors }) {
+export default function InputFields({ fields, state }) {
   const [form, setForm] = state;
   // Methods
   function onChange(key, value) {
@@ -17,7 +17,6 @@ export default function InputFields({ fields, state, errors }) {
       options={item}
       state={form[item.key]}
       onChange={onChange}
-      isInvalid={errors[item.key]}
     />
   ));
 

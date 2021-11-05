@@ -1,16 +1,14 @@
 // NPM packages
 import { useRef } from "react";
 
-export default function InputField({ onChange, options, state, isInvalid }) {
-  const { key, label, placeholder, type, inputError, required } = options;
+export default function InputField({ onChange, options, state}) {
+  const { key, label, placeholder, type, required } = options;
 
   // Properties
   const inputReference = useRef(null);
 
   return (
     <label>
-      {/* {label}
-      <br /> */}
       <input
         onChange={() => onChange(key, inputReference.current.value)}
         placeholder={placeholder}
@@ -21,8 +19,6 @@ export default function InputField({ onChange, options, state, isInvalid }) {
         required={required}
       />
       <span className={`${state && "active"}`}> {label}</span>
-      <br />
-      {isInvalid && <small className="input-error">{inputError}</small>}
     </label>
   );
 }
