@@ -8,7 +8,8 @@
 
 /* Pages */
 @import url("./pages/login.css");
-/* @import url("./pages/signup.css"); */
+@import url("./pages/signup.css");
+@import url("./pages/password-recovery.css");
 
 /* Components */
 @import url("./components/header.css");

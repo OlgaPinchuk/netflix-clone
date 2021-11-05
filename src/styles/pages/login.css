@@ -207,3 +207,16 @@
 .help:hover {
   text-decoration: underline;
 }
+
+ .login-signup-now {
+  color: #737373;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 35px;
+}
+
+.login-signup-now a {
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 500;
+}

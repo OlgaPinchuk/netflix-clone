@@ -1,5 +1,6 @@
 // NPM packages
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+
 // Project files
 import Login from "pages/auth/Login";
 import SignUp from "pages/auth/SignUp";
@@ -11,8 +12,8 @@ export default function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/" exact component={Login} />
-          <Route path="/signup" exact component={SignUp} />
-          <Route path="/recover" exact component={PasswordRecovery} />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/recovery" component={PasswordRecovery} />
         </Switch>
       </BrowserRouter>
     </div>

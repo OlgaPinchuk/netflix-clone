@@ -28,7 +28,7 @@ export default function Login() {
   }
 
   return (
-    <div className="page login-page">
+    <main className="page login-page">
       <div className="login-wrapper">
         <div className="login-wrapper-background">
           <img
@@ -54,16 +54,22 @@ export default function Login() {
               />
               <button className="button login-button">Sign In</button>
               <div className="login-form-help">
-                <Checkbox label="Remember me"/>
-                <Link to="/recover" className="help">
+                <Checkbox label="Remember me" />
+                <Link to="/recovery" className="help">
                   Need help?
                 </Link>
               </div>
             </form>
+            <div className="login-signup-now">
+              New to Netflix?&nbsp;
+              <Link to="/signup" className="help">
+                Sign up now
+              </Link>
+            </div>
           </div>
         </div>
       </div>
       <Footer />
-    </div>
+    </main>
   );
 }
