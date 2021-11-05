@@ -1,0 +1,18 @@
+[
+  {
+    "key": "email",
+    "label": "Email",
+    "placeholder": "",
+    "type": "email",
+    "inputError": "Please enter a valid email",
+    "required": true
+  },
+  {
+    "key": "password",
+    "label": "Password",
+    "placeholder": "",
+    "type": "password",
+    "inputError": "Your password must contain between 4 and 60 characters",
+    "required": true
+  }
+]

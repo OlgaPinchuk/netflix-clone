@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f3f3f3;
+  color: var(--color-dark);
+  font-size: 16px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+h1, h2 {
+  color: var(--color-white);
+}
+
+.App {
+  height: 100vh;
+  font-weight: normal;
+  font-size: var(--font-size-medium);
+  /* display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer"; */
+}

@@ -1,0 +1,24 @@
+:root {
+  /* Color */
+  --color-black: #000000;
+  --color-dark: #333333;
+  --color-dim-grey: #737373;
+  --color-blue: #0071eb;
+  --color-red: #e50914;
+  --color-orange: #e87c03;
+  --color-white: #ffffff;
+
+  /* Space */
+  --space-small: 8px;
+  --space-medium: 16px;
+  --space-big: 24px;
+
+  /* Dimensions */
+  --max-width: 900px;
+
+  /* Font sizes */
+  --font-size-small: 12px;
+  --font-size-medium: 16px;
+  --font-size-big: 20px;
+  --font-size-ultra: 65px;
+}
