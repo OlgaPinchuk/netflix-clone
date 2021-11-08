@@ -1,0 +1,10 @@
+[
+  {
+    "key": "name",
+    "label": "Title name",
+    "placeholder": "",
+    "type": "text",
+    "inputError": "",
+    "required": true
+  }
+]

@@ -44,13 +44,13 @@ export async function signIn(email, password) {
   return account;
 }
 
-
 export async function recoverPassword(email) {
   const account = { isReset: false, payload: "" };
 
   try {
     await sendPasswordResetEmail(authInstance, email);
-    account.payload = "We sent you instructions how to reset your password. Please check your email";
+    account.payload =
+      "We sent you instructions how to reset your password. Please check your email";
     account.isReset = true;
   } catch (error) {
     account.payload = error.message;

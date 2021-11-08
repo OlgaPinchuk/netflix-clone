@@ -10,6 +10,9 @@
 @import url("./pages/login.css");
 @import url("./pages/signup.css");
 @import url("./pages/password-recovery.css");
+@import url("./pages/admin.css");
 
 /* Components */
 @import url("./components/header.css");
+@import url("./components/select.css");
+

@@ -1,0 +1,13 @@
+.admin-header {
+  padding: 35px 0;
+  background: var(--color-black);
+  border-radius: 7px;
+  text-align: center;
+  color: var(--color-white)
+}
+
+.admin-header h1 {
+  margin: 10px auto;
+  color: var(--color-red);
+  font-size: 35px;
+}

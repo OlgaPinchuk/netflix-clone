@@ -1,9 +1,10 @@
 // Project files
 import InputField from "components/InputField";
-import { useState } from "react";
 
 export default function InputFields({ fields, state }) {
+
   const [form, setForm] = state;
+  
   // Methods
   function onChange(key, value) {
     const field = { [key]: value };

@@ -7,10 +7,10 @@ import Header from "components/Header";
 import InputFields from "components/InputFields";
 import Footer from "components/Footer";
 import Checkbox from "components/Checkbox";
-import fields from "data/fields-login.json";
+import fields from "data/auth/fields-login.json";
 import { useUser } from "state/UserProvider";
 import { signIn } from "scripts/authentification";
-import { getDocument } from "scripts/firestore";
+import { getDocument } from "scripts/fireStore";
 
 import small from "assets/images/home-bg_small.jpg";
 import medium from "assets/images/home-bg_medium.jpg";

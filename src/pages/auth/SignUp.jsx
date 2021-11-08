@@ -6,9 +6,9 @@ import { Link, useHistory } from "react-router-dom";
 import InputFields from "components/InputFields";
 // import Footer from "components/Footer";
 import Checkbox from "components/Checkbox";
-import fields from "data/fields-signup.json";
+import fields from "data/auth/fields-signup.json";
 import { createAccount } from "scripts/authentification";
-import { createDocumentWithId } from "scripts/firestore";
+import { createDocumentWithId } from "scripts/fireStore";
 import { useUser } from "state/UserProvider";
 
 export default function SignUp() {
