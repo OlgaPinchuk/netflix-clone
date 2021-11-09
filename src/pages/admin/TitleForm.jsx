@@ -9,12 +9,12 @@ import InputImage from "components/InputImage";
 import fields from "data/admin/fields-create-title.json";
 import titleTypes from "./titleTypes";
 import { createDocument, updateDocument } from "scripts/fireStore";
-import { useTitle } from "state/TitleProvider";
+import { useContent } from "state/ContentProvider";
 
 export default function TitleForm({ title, id }) {
   // Global state
   const history = useHistory();
-  const { titleDispatch } = useTitle();
+  const { titleDispatch } = useContent();
 
   // Local state
   const [form, setForm] = useState({
@@ -26,6 +26,7 @@ export default function TitleForm({ title, id }) {
     description: title.description,
   });
   const [errorMessage, setErrorMessage] = useState("");
+
 
   // Constants
   const slug = form.name.toLowerCase().split(" ").join("-");
@@ -53,6 +54,8 @@ export default function TitleForm({ title, id }) {
     });
     history.goBack();
   }
+
+
 
   return (
     <form className="title-form">

@@ -1,35 +1,56 @@
 // NPM packages
-import { useParams, useHistory } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 // Project files
-import TitleForm from "./TitleForm";
-import newTitle from "./newTitle";
-import { useTitle } from "state/TitleProvider";
+import { useContent } from "state/ContentProvider";
+import { getCollection } from "scripts/fireStore";
 
 export default function Admin() {
   // Global state
-  const { titles, titleDispatch } = useTitle();
-  const { id } = useParams();
-  const history = useHistory();
+  const { categories, categoryDispatch } = useContent();
 
-  // Properties
-  const currentTitle = getTitle(titles, id);
-  const initialMode = id === "new-title";
+  // Local state
+  const [status, setStatus] = useState(0); // 0 loading, 1 loaded, 2 error
 
   // Methods
-  function getTitle(titles, id) {
-    const oldTitle = titles.find((item) => item.slug === id);
-    return oldTitle ?? newTitle;
-  }
+  const fetchData = useCallback(async (path) => {
+    try {
+      const data = await getCollection(path);
+
+      categoryDispatch({ type: "READ_ALL_CATEGORIES", payload: data });
+      setStatus(1);
+    } catch {
+      setStatus(2);
+    }
+  }, []);
+
+  useEffect(() => fetchData("categories"), [fetchData]);
+
+  const CategoriesList = categories.map((item) => (
+    <Link
+      to={"/admin-categories/" + item.id}
+      className="category-card"
+      key={item.id}
+    >
+      <h3>{item.name}</h3>
+    </Link>
+  ));
 
   return (
     <main className="page admin-page">
       <header className="admin-header">
         <h1>Administration Page</h1>
+        <p>Welcome to Netflix admin page!</p>
         <p>Here you can add, update or delete the content titles</p>
       </header>
-
-      <TitleForm title={currentTitle} id={currentTitle.id} />
+      <div className="page-content">
+        <h2>Content categories</h2>
+        <p className="instruction">
+          Below you can choose the category to view or update
+        </p>
+        <div className="categories"> {CategoriesList}</div>
+      </div>
     </main>
   );
 }

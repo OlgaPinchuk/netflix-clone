@@ -6,16 +6,16 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { UserProvider } from "./state/UserProvider";
 import { AuthProvider } from "state/AuthProvider";
-import { TitleProvider } from "state/TitleProvider";
+import { ContentProvider } from "state/ContentProvider";
 import "./styles/style.css";
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
       <UserProvider>
-        <TitleProvider>
+        <ContentProvider>
         <App />
-        </TitleProvider>
+        </ContentProvider>
       </UserProvider>
     </AuthProvider>
   </React.StrictMode>,

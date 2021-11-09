@@ -1,0 +1,30 @@
+.admin-table {
+  width: 90vw;
+  margin: 15px auto;
+  color: #212529;
+  line-height: 1.5;
+}
+
+.admin-table td,
+.admin-table th {
+  padding: 15px;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.admin-table thead th {
+  vertical-align: bottom;
+  text-align: left;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.admin-table thead th.title {
+  width: 30%;
+}
+
+.admin-table .thumb {
+  width: 90px;
+  height: 60px;
+  object-fit: cover;
+  object-position: center;
+}
