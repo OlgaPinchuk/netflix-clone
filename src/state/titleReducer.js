@@ -15,8 +15,10 @@ export default function titleReducer(state, action) {
 
 function createTitle(state, action) {
   const { payload } = action;
-
-  if (payload !== null) return [...state, payload];
+  if (payload !== null) {
+    const result = [...state, payload];
+    return result;
+  }
   return state;
 }
 
@@ -30,16 +32,17 @@ function readTitle(state, action) {
 function updateTitle(state, action) {
   const { payload } = action;
   const newState = [...state];
-  const index = newState.findIndex((item) => item.id === payload.id);
-
-  newState[index] = { ...payload };
+  const newIndex = newState.findIndex((item) => item.id === payload.id);
+  if (newIndex !== -1) {
+    newState[newIndex] = { ...payload };
+  }
   return newState;
 }
 
 function deleteTitle(state, action) {
   const { payload } = action;
   if (payload !== null) {
-    return [...state, state.filter((item) => item.id !== payload)];
+    return [...state.filter((item) => item.id !== payload)];
   }
   return state;
 }

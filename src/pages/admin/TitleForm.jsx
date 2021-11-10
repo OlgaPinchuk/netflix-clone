@@ -1,25 +1,21 @@
 // NPM packages
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
 
 // Project files
-import Select from "components/Select";
 import InputFields from "components/InputFields";
 import InputImage from "components/InputImage";
 import fields from "data/admin/fields-create-title.json";
-import titleTypes from "./titleTypes";
 import { createDocument, updateDocument } from "scripts/fireStore";
 import { useContent } from "state/ContentProvider";
 
-export default function TitleForm({ title, id }) {
+export default function TitleForm({ title, category, state }) {
   // Global state
-  const history = useHistory();
   const { titleDispatch } = useContent();
+  const [editModeState, modifiedDateState] = state;
 
   // Local state
   const [form, setForm] = useState({
     id: title.id,
-    type: title.type,
     name: title.name,
     thumbImage: title.thumbUrl,
     mainImage: title.mainImageUrl,
@@ -27,64 +23,65 @@ export default function TitleForm({ title, id }) {
   });
   const [errorMessage, setErrorMessage] = useState("");
 
-
   // Constants
-  const slug = form.name.toLowerCase().split(" ").join("-");
-  //const pageHeader = title.name === "" ? "Create title" : "Edit title";
+  const filename = form.name.toLowerCase().split(" ").join("-");
 
   // Methods
-  async function onPublish(e) {
-    e.preventDefault();
-    const titleId = titleTypes.find((item) => item.name === form.type).id;
-    const path = `titles/${titleId}/items`;
+  async function onPublish(event) {
+    event.preventDefault();
+    const path = `categories/${category.id}/items`;
     const editedTitle = {
-      type: form.type,
+      type: category.name,
       name: form.name,
       thumbUrl: form.thumbImage,
       mainImageUrl: form.mainImage,
       description: form.description,
     };
+  
 
-    if (id !== "") await updateDocument(path, id, editedTitle);
-    else await createDocument(path, editedTitle);
+    if (title.id !== "") await updateDocument(path, title.id, editedTitle);
+    else {
+      const newId = await createDocument(path, editedTitle);
+      titleDispatch({
+        type: "CREATE_TITLE",
+        payload: { id: newId, ...editedTitle },
+      });
+    }
 
     titleDispatch({
       type: "UPDATE_TITLE",
-      payload: { id: id, data: editedTitle },
+      payload: { id: title.id, data: editedTitle },
     });
-    history.goBack();
+    editModeState(false);
+    modifiedDateState(new Date());
   }
 
-
+  function cancelEdit() {
+    if (
+      window.confirm(
+        "Do you really want to cancel the form? Your changes would be lost"
+      )
+    ) {
+      editModeState(false);
+    }
+  }
 
   return (
-    <form className="title-form">
+    <form className="admin-form title-form">
+      <h2>{ title.name === "" ? "Create" : "Edit "} title</h2>
       <fieldset>
         <legend>
           <b>General info</b>
         </legend>
-        <Select label="type" options={titleTypes} state={[form, setForm]} />
         <InputFields
           fields={fields}
           state={[form, setForm]}
           errors={errorMessage}
         />
       </fieldset>
-      <InputImage
-        label="Thumb"
-        id="thumbImage"
-        state={[form, setForm]}
-        filename={`${form.type}/thumbImage/${slug}`}
-      />
-      <InputImage
-        label="Main image"
-        id="mainImage"
-        filename={`${form.type}/mainImage/${slug}`}
-        state={[form, setForm]}
-      />
       <fieldset>
         <legend>
-          <b>Title Description</b>
+          <b>Description</b>
         </legend>
         <textarea
           id="description"
@@ -93,9 +90,30 @@ export default function TitleForm({ title, id }) {
           }
         ></textarea>
       </fieldset>
-      <button type="submit" className="button save-button" onClick={onPublish}>
-        Publish title
-      </button>
+      <InputImage
+        label="Thumb"
+        id="thumbImage"
+        state={[form, setForm]}
+        filename={`${form.type}/thumbImage/${filename}`}
+      />
+      <InputImage
+        label="Main image"
+        id="mainImage"
+        filename={`${form.type}/mainImage/${filename}`}
+        state={[form, setForm]}
+      />
+      <footer>
+        <button
+          type="submit"
+          className="button save-button"
+          onClick={onPublish}
+        >
+          Publish title
+        </button>
+        <button className="cancel-button" onClick={cancelEdit}>
+          Cancel
+        </button>
+      </footer>
     </form>
   );
 }

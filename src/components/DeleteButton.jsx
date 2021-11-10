@@ -1,5 +1,5 @@
-export default function DeleteButton({onEvent}) {
+export default function DeleteButton({onClick}) {
   return (
-    <button className="delete-button" onClick={onEvent}>Delete</button>
+    <button className="delete-button" onClick={onClick}>Delete</button>
   )
 }

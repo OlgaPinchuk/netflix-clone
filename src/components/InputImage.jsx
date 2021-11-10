@@ -21,7 +21,7 @@ export default function InputImage({ label, id, state, filename }) {
         <b>{label}:</b>
       </legend>
       <label className="custom-file-chooser">
-        <b>Upload image:</b>
+        <b>Upload image: </b>
         <input onChange={(event) => onEvent(event, filename)} type="file" />
         <img src={Image} alt="User generated content" />
       </label>

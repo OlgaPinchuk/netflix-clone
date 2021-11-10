@@ -19,23 +19,18 @@ export default function CategoryDetails({ match }) {
   const [titles, setTitles] = useState([]);
   const [status, setStatus] = useState(0); // 0 loading, 1 loaded, 2 error
   const [editMode, setEditMode] = useState(false);
+  const [modifiedDate, setModifiedDate] = useState();
+  const [currentTitle, setCurrentTitle] = useState(newTitle);
 
   // Properties
   const routerID = match.params.id;
-
-  const { id, name: categoryName } = categories.find(
-    (item) => item.id === routerID
-  );
-
-  const path = `categories/${id}/items`;
-
-  const currentTitle = getTitle(titles, id);
+  const currentCategory = categories.find((item) => item.id === routerID);
+  const path = `categories/${currentCategory.id}/items`;
 
   // Methods
   const fetchData = useCallback(async (url) => {
     try {
       const titles = await getCollection(url);
-
       setTitles(titles);
       titleDispatch({ type: "READ_TITLE", payload: titles });
       setStatus(1);
@@ -44,44 +39,56 @@ export default function CategoryDetails({ match }) {
     }
   }, []);
 
-  useEffect(() => fetchData(path), [fetchData]);
-
-  function getTitle(titles, id) {
-    const existingTitle = titles.find((item) => item.id === id);
-    return existingTitle ?? newTitle;
-  }
+  useEffect(() => fetchData(path), [fetchData, modifiedDate]);
 
   async function onDelete(titleId) {
-    const path = `categories/${id}/items`;
     if (window.confirm("Are you sure you want to delete a content title?")) {
-      await deleteDocument(path, titleId);
-      titleDispatch({ type: "DELETE_TITLE", payload: titleId });
-      history.goBack();
+      const payload = await deleteDocument(path, titleId);
+      if (payload.isDeleted) {
+        titleDispatch({ type: "DELETE_TITLE", payload: titleId });
+        setModifiedDate(new Date());
+      } else {
+        window.alert("The title wasn't deleted. Please try again");
+      }
     }
+  }
+
+  function onAdd() {
+    setCurrentTitle(newTitle);
+    setEditMode(true);
+  }
+
+  function onEdit(title) {
+    setCurrentTitle(title);
+    setEditMode(true);
   }
 
   return (
     <main className="page category-details-page">
       <header className="admin-header">
-        <h1>{categoryName}</h1>
+        <h1>{currentCategory.name}</h1>
         <p>Here you can add, update or delete content</p>
-        <BackButton history={history} />
-        <button
-          className="netflix-button add-new"
-          onClick={() => setEditMode(true)}
-        >
-          Add title
-        </button>
+        {!editMode && (
+          <>
+            <BackButton history={history} />
+            <button
+              className="netflix-button add-new"
+              onClick={onAdd}
+            >
+              Add title
+            </button>
+          </>
+        )}
       </header>
       <div className="page-content">
         {!editMode ? (
-          <TitlesTable
-            titles={titles}
-            onDelete={onDelete}
-            onEdit={() => setEditMode(true)}
-          />
+          <TitlesTable titles={titles} onDelete={onDelete} onEdit={onEdit} />
         ) : (
-          <TitleForm title={currentTitle} id={currentTitle.id} />
+          <TitleForm
+            title={currentTitle}
+            category={currentCategory}
+            state={[setEditMode, setModifiedDate]}
+          />
         )}
       </div>
     </main>
