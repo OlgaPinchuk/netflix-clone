@@ -1,6 +1,6 @@
 // NPM packages
 import { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 // Project files
 import InputFields from "components/InputFields";
@@ -13,7 +13,7 @@ import { useUser } from "state/UserProvider";
 
 export default function SignUp() {
   // Global state
-  const { user, setUser, setIsLogged } = useUser();
+  const { setUser, setIsLogged } = useUser();
   const history = useHistory();
 
   // Local state

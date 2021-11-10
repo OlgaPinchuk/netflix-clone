@@ -4,6 +4,7 @@ import { useState } from "react";
 // Project files
 import InputFields from "components/InputFields";
 import InputImage from "components/InputImage";
+import Textarea from "components/Textarea";
 import fields from "data/admin/fields-create-title.json";
 import { createDocument, updateDocument } from "scripts/fireStore";
 import { useContent } from "state/ContentProvider";
@@ -37,7 +38,6 @@ export default function TitleForm({ title, category, state }) {
       mainImageUrl: form.mainImage,
       description: form.description,
     };
-  
 
     if (title.id !== "") await updateDocument(path, title.id, editedTitle);
     else {
@@ -68,28 +68,18 @@ export default function TitleForm({ title, category, state }) {
 
   return (
     <form className="admin-form title-form">
-      <h2>{ title.name === "" ? "Create" : "Edit "} title</h2>
-      <fieldset>
-        <legend>
-          <b>General info</b>
-        </legend>
-        <InputFields
-          fields={fields}
-          state={[form, setForm]}
-          errors={errorMessage}
-        />
-      </fieldset>
-      <fieldset>
-        <legend>
-          <b>Description</b>
-        </legend>
-        <textarea
-          id="description"
-          onChange={(e) =>
-            setForm({ ...form, ...{ description: e.target.value } })
-          }
-        ></textarea>
-      </fieldset>
+      <h2>{title.name === "" ? "Create" : "Edit "} title</h2>
+      <InputFields
+        fields={fields}
+        legend="General info"
+        state={[form, setForm]}
+        errors={errorMessage}
+      />
+      <Textarea
+        legend="Description"
+        fieldName="description"
+        state={[form, setForm]}
+      />
       <InputImage
         label="Thumb"
         id="thumbImage"

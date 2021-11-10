@@ -18,7 +18,7 @@ import large from "assets/images/home-bg_large.jpg";
 
 export default function Login() {
   // Global state
-  const { user, setUser, setIsLogged } = useUser();
+  const { setUser, setIsLogged } = useUser();
   const history = useHistory();
 
 
