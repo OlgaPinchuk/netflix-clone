@@ -12,6 +12,7 @@
 @import url("./pages/password-recovery.css");
 @import url("./pages/admin.css");
 @import url("./pages/category-details.css");
+@import url("./pages/series-details.css");
 
 /* Components */
 @import url("./components/header.css");

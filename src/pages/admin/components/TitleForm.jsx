@@ -11,8 +11,8 @@ import { useContent } from "state/ContentProvider";
 
 export default function TitleForm({ title, category, state }) {
   // Global state
-  const { titleDispatch } = useContent();
-  const [editModeState, modifiedDateState] = state;
+  const { titleDispatch,setModifiedDate } = useContent();
+  const [editModeState] = state;
 
   // Local state
   const [form, setForm] = useState({
@@ -39,6 +39,9 @@ export default function TitleForm({ title, category, state }) {
       description: form.description,
     };
 
+    if (category.name === "Series" && title.name === "")
+      editedTitle.seasons = {};
+
     if (title.id !== "") await updateDocument(path, title.id, editedTitle);
     else {
       const newId = await createDocument(path, editedTitle);
@@ -53,7 +56,7 @@ export default function TitleForm({ title, category, state }) {
       payload: { id: title.id, data: editedTitle },
     });
     editModeState(false);
-    modifiedDateState(new Date());
+    setModifiedDate(new Date());
   }
 
   function cancelEdit() {

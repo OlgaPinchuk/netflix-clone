@@ -3,6 +3,7 @@
   margin: 15px auto;
   color: #212529;
   line-height: 1.5;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .admin-table td,
