@@ -3,23 +3,23 @@ import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 // Project files
-import TitleForm from "./TitleForm";
-import newTitle from "./newTitle";
-import TitlesTable from "./TitlesTable";
+import TitleForm from "./components/TitleForm";
+import { newTitle } from "./components/newContentItem";
+import ContentItemsTable from "./components/ContentItemsTable";
 import BackButton from "components/BackButton";
 import { useContent } from "state/ContentProvider";
 import { getCollection, deleteDocument } from "scripts/fireStore";
 
 export default function CategoryDetails({ match }) {
   // Global state
-  const { categories, titleDispatch } = useContent();
+  const { categories, titleDispatch, modifiedDate, setModifiedDate } =
+    useContent();
   const history = useHistory();
 
   // Local state
   const [titles, setTitles] = useState([]);
   const [status, setStatus] = useState(0); // 0 loading, 1 loaded, 2 error
   const [editMode, setEditMode] = useState(false);
-  const [modifiedDate, setModifiedDate] = useState();
   const [currentTitle, setCurrentTitle] = useState(newTitle);
 
   // Properties
@@ -71,10 +71,7 @@ export default function CategoryDetails({ match }) {
         {!editMode && (
           <>
             <BackButton history={history} />
-            <button
-              className="netflix-button add-new"
-              onClick={onAdd}
-            >
+            <button className="netflix-button add-new" onClick={onAdd}>
               Add title
             </button>
           </>
@@ -82,12 +79,16 @@ export default function CategoryDetails({ match }) {
       </header>
       <div className="page-content">
         {!editMode ? (
-          <TitlesTable titles={titles} onDelete={onDelete} onEdit={onEdit} />
+          <ContentItemsTable
+            contentItems={titles}
+            onDelete={onDelete}
+            onEdit={onEdit}
+          />
         ) : (
           <TitleForm
             title={currentTitle}
             category={currentCategory}
-            state={[setEditMode, setModifiedDate]}
+            state={[setEditMode]}
           />
         )}
       </div>

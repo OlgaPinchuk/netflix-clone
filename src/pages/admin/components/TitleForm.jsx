@@ -11,8 +11,7 @@ import { useContent } from "state/ContentProvider";
 
 export default function TitleForm({ title, category, state }) {
   // Global state
-  const { titleDispatch,setModifiedDate } = useContent();
-  const [editModeState] = state;
+  const { titleDispatch, setModifiedDate } = useContent();
 
   // Local state
   const [form, setForm] = useState({
@@ -26,6 +25,7 @@ export default function TitleForm({ title, category, state }) {
 
   // Constants
   const filename = form.name.toLowerCase().split(" ").join("-");
+  const [editModeState] = state;
 
   // Methods
   async function onPublish(event) {
@@ -60,11 +60,7 @@ export default function TitleForm({ title, category, state }) {
   }
 
   function cancelEdit() {
-    if (
-      window.confirm(
-        "Do you really want to cancel the form? Your changes would be lost"
-      )
-    ) {
+    if (window.confirm("Do you want to cancel the form?")) {
       editModeState(false);
     }
   }

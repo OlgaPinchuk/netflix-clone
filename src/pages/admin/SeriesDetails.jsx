@@ -1,23 +1,19 @@
 // NPM packages
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 // Project files
-import SeriesForm from "./components/SeriesForm";
-import newEpisode from "./components/newEpisode";
+import EpisodeForm from "./components/EpisodeForm";
 import SeasonTable from "./components/SeasonTable";
 import BackButton from "components/BackButton";
+import { newEpisode } from "./components/newContentItem";
 import { useContent } from "state/ContentProvider";
-import {
-  getCollection,
-  deleteDocument,
-  updateDocument,
-} from "scripts/fireStore";
+import { isEmptyObject } from "scripts/utils/utils";
 
 export default function SeriesDetails({ match }) {
   // Global state
   const history = useHistory();
-  const { categories, titles, setModifiedDate } = useContent();
+  const { titles } = useContent();
   const currentSeries = titles.find((item) => item.id === match.params.id);
 
   // Local state
@@ -25,50 +21,24 @@ export default function SeriesDetails({ match }) {
   const [currentEpisode, setCurrentEpisode] = useState(newEpisode);
   const [editMode, setEditMode] = useState(false);
 
-  // Properties
-  // const seriesCategoryId = categories.find((item) => item.name === "Series").id;
-  //const path = `categories/${currentSeries.id}/items`;
-
   // Components
   const Seasons = Object.entries(seasons).map((season, index) => (
     <SeasonTable
       key={index}
-      data={[season, currentSeries]}
-      onEdit={() => {}}
+      seriesData={[season, currentSeries]}
+      onEdit={onEdit}
     />
   ));
 
   // Methods
-
-
   function onAdd() {
+    setCurrentEpisode(newEpisode);
     setEditMode(true);
   }
 
-  async function onDelete(episodeId) {
-    if (window.confirm("Are you sure you want to delete an episode?")) {
-      const path = `categories/${currentSeries.id}/items`;
-      // const editedSeries = {
-      //   ...currentSeries,
-      //   seasons: {
-      //     ...currentSeries.seasons,
-      //     [form.season]: {
-      //       ...series.seasons[form.season],
-      //       episodes: {
-      //         ...series.seasons[form.season].episodes,
-      //         [form.episodeNumber]: { ...editedEpisode },
-      //       },
-      //     },
-      //   },
-      // };
-      // const payload = await updateDocument(path, editedEpisode);
-      // if (payload.isDeleted) {
-      //   titleDispatch({ type: "DELETE_TITLE", payload: titleId });
-      //   setModifiedDate(new Date());
-      // } else {
-      //   window.alert("The title wasn't deleted. Please try again");
-      // }
-    }
+  function onEdit(episodeId) {
+    setCurrentEpisode(episodeId);
+    setEditMode(true);
   }
 
   return (
@@ -87,9 +57,13 @@ export default function SeriesDetails({ match }) {
       </header>
       <div className="page-content">
         {!editMode ? (
-          <>{Seasons}</>
+          isEmptyObject(currentSeries.seasons) ? (
+            <h2 className="no-content-message">No content yet</h2>
+          ) : (
+            <>{Seasons}</>
+          )
         ) : (
-          <SeriesForm
+          <EpisodeForm
             episode={currentEpisode}
             series={currentSeries}
             state={[setEditMode]}

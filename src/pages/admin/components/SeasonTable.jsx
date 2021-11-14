@@ -1,16 +1,16 @@
 // Project files
 import ContentItemsTable from "./ContentItemsTable";
 import { useContent } from "state/ContentProvider";
-import { updateDocument } from "scripts/fireStore";
+import { updateDocument, deleteDocumentField } from "scripts/fireStore";
 
-export default function SeasonTable({ data, onEdit, onDelete }) {
-  // Properties
-  const [season, series] = data;
-  const [seasonNumber, content] = season;
-  const episodes = getEpisodes(content);
-
+export default function SeasonTable({ seriesData, onEdit }) {
   // Global state
   const { categories, setModifiedDate } = useContent();
+  // Properties
+  const [season, series] = seriesData;
+  const [seasonNumber, content] = season;
+  const episodes = getEpisodes(content);
+  // const [setEditMode, setCurrentEpisode] = state;
 
   // Methods
   function getEpisodes(data) {
@@ -21,30 +21,18 @@ export default function SeasonTable({ data, onEdit, onDelete }) {
     return episodes;
   }
 
-  function deleteEpisode(items, id) {
-    return items.filter((item) => item.id !== id);
-  }
-
   async function onDelete(episodeId) {
     if (window.confirm("Are you sure you want to delete an episode?")) {
       const seriesCategoryId = categories.find(
         (item) => item.name === "Series"
       ).id;
       const path = `categories/${seriesCategoryId}/items`;
-      const newEpisodes = deleteEpisode(episodes, episodeId);
-      const editedSeries = {
-        ...series,
-        seasons: {
-          ...series.seasons,
-          [seasonNumber]: {
-            ...series.seasons[seasonNumber],
-            episodes: {
-              ...newEpisodes,
-            },
-          },
-        },
-      };
-      await updateDocument(path, series.id, editedSeries);
+      const fieldToDelete =
+        episodes.length > 1
+          ? `seasons.${seasonNumber}.episodes.${episodeId}`
+          : `seasons.${seasonNumber}`;
+
+      await deleteDocumentField(path, series.id, fieldToDelete);
 
       setModifiedDate(new Date());
     }

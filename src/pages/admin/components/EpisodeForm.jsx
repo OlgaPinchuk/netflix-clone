@@ -5,15 +5,13 @@ import { useState } from "react";
 import InputFields from "components/InputFields";
 import InputImage from "components/InputImage";
 import Textarea from "components/Textarea";
-import Select from "components/Select";
 import fields from "data/admin/fields-episode.json";
-import { createDocument, updateDocument } from "scripts/fireStore";
+import { updateDocument, deleteDocumentField } from "scripts/fireStore";
 import { useContent } from "state/ContentProvider";
 
-export default function SeriesForm({ episode, series, state }) {
+export default function EpisodeForm({ episode, series, state }) {
   // Global state
-  const { categories, titles, titleDispatch, modifiedDate, setModifiedDate } =
-    useContent();
+  const { categories, setModifiedDate } = useContent();
 
   // Local state
   const [form, setForm] = useState({
@@ -48,43 +46,42 @@ export default function SeriesForm({ episode, series, state }) {
       thumbUrl: form.thumbUrl,
     };
 
-    const isNewSeries = Object.keys(series.seasons).length === 0;
-    if (isNewSeries) {
-      series.seasons[form.season] = {
-        episodes: {},
-      };
-    }
-    const editedSeries = {
-      ...series,
+    const isNewSeason = series.seasons[form.season] === undefined;
+
+    const newSeasonData = {
       seasons: {
         ...series.seasons,
         [form.season]: {
-          ...series.seasons[form.season],
           episodes: {
-            ...series.seasons[form.season].episodes,
             [form.episodeNumber]: { ...editedEpisode },
           },
         },
       },
     };
 
-    await updateDocument(path, series.id, editedSeries);
+    const newData = isNewSeason
+      ? newSeasonData
+      : {
+          seasons: {
+            ...series.seasons,
+            [form.season]: {
+              ...series.seasons[form.season],
+              episodes: {
+                ...series.seasons[form.season].episodes,
+                [form.episodeNumber]: { ...editedEpisode },
+              },
+            },
+          },
+        };
+
+    await updateDocument(path, series.id, newData);
+
+    if (episode.season && episode.season !== editedEpisode.season) {
+      const fieldToDelete = `seasons.${episode.season}.episodes.${episode.episodeNumber}`;
+      await deleteDocumentField(path, series.id, fieldToDelete);
+    }
+
     setModifiedDate(new Date());
-
-    // if (episode.id !== "")
-    //   await updateDocument(path, series.id,     );
-    // else {
-    //   const newId = await createDocument(path, editedEpisode);
-    //   titleDispatch({
-    //     type: "CREATE_TITLE",
-    //     payload: { id: newId, ...editedEpisode },
-    //   });
-    // }
-
-    titleDispatch({
-      type: "UPDATE_TITLE",
-      payload: { id: series.id, ...series },
-    });
     editModeState(false);
   }
 

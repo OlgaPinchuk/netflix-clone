@@ -13,6 +13,7 @@ export default function ContentItemsTable({ contentItems, onDelete, onEdit }) {
 
   // Components
   const ItemsRows = contentItems.map((item) => {
+    const itemToDelete = isEpisode ? item.episodeNumber : item.id;
     return (
       <tr key={item.id}>
         {isEpisode ? <td>{item.episodeNumber}</td> : null}
@@ -23,7 +24,7 @@ export default function ContentItemsTable({ contentItems, onDelete, onEdit }) {
         <td>{item.description}</td>
         <td>
           <EditButton onClick={() => onEdit(item)} />
-          <DeleteButton onClick={() => onDelete(item.id)} />
+          <DeleteButton onClick={() => onDelete(itemToDelete)} />
           {item.type === "Series" && (
             <Link to={`/series/${item.id}`}>View seasons</Link>
           )}

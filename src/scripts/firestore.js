@@ -4,6 +4,7 @@ import {
   addDoc,
   setDoc,
   updateDoc,
+  deleteField,
   getDocs,
   deleteDoc,
 } from "firebase/firestore/lite"; // async methods
@@ -41,6 +42,13 @@ export async function getCollection(path) {
     return { id: doc.id, ...doc.data() };
   });
   return list;
+}
+
+export async function deleteDocumentField(path, id, field) {
+  const docReference = doc(fireStoreInstance, path, id);
+  await updateDoc(docReference, {
+    [field]: deleteField(),
+  });
 }
 
 export async function deleteDocument(path, id) {
