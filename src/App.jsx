@@ -8,6 +8,7 @@ import { useAuth } from "state/AuthProvider";
 import { getDocument } from "scripts/fireStore";
 import Logged from "routes/Logged";
 import Unlogged from "routes/Unlogged";
+import Header from "components/header/Header";
 
 export default function App() {
   // Global state
@@ -38,8 +39,9 @@ export default function App() {
   }, [fetchUser, uid]);
 
   return (
-    <div className="App">
+    <div className={`App mode-${isLogged ? "logged": "unlogged"}`}>
       <BrowserRouter>
+        <Header />
         <Switch>{isLogged ? <Logged /> : <Unlogged />}</Switch>
       </BrowserRouter>
     </div>

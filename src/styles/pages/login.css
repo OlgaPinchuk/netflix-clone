@@ -1,6 +1,7 @@
 .login-page > * {
   position: relative;
 }
+
 .login-wrapper {
   position: relative;
   margin: 0;
@@ -26,7 +27,7 @@
 
 .login-form-wrapper {
   margin: 0 auto -236px;
-  padding: 0 5%;
+  padding: 60px 5%;
   max-width: 450px;
   min-height: 100vh;
   color: #333;
@@ -37,6 +38,7 @@
 .login-form-signup {
   min-height: 660px;
   padding: 60px 68px 40px;
+  margin: 0;
   margin-bottom: 90px;
   background-color: rgba(0, 0, 0, 0.75);
   border-radius: 4px;
@@ -44,7 +46,6 @@
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   flex-direction: column;
-  margin: 0;
   width: 100%;
   min-width: 380px;
 }
@@ -61,6 +62,10 @@
 
 .login-form {
   margin-bottom: 0;
+}
+
+.login-form fieldset {
+  border: none;
 }
 
 .login-form label {

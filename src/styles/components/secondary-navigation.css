@@ -1,0 +1,96 @@
+.secondary-navigation {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+
+  justify-content: flex-end;
+  position: absolute;
+  right: 4%;
+  top: 0;
+  height: 100%;
+}
+
+.account-dropdown {
+  display: block;
+  position: relative;
+  font-size: 12px;
+  z-index: 0;
+}
+
+.account-dropdown-button {
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.profile {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.profile-icon {
+  vertical-align: middle;
+  height: 32px;
+  width: 32px;
+  border: 0;
+  border-radius: 4px;
+}
+
+.caret {
+  margin-left: 10px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  border-color: #fff transparent transparent transparent;
+  transition: transform 367ms cubic-bezier(0.21, 0, 0.07, 1);
+}
+
+.open .caret {
+  transform: rotate(180deg);
+}
+
+.account-dropdown-sections {
+  position: absolute;
+  right: 0;
+  top: 52px;
+  margin-left: 0;
+  padding: 0;
+  width: 181px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: var(--color-white);
+  font-size: 13px;
+  line-height: 21px;
+  border: solid 1px rgba(255, 255, 255, 0.15);
+  cursor: default;
+  opacity: 0;
+}
+
+.open .account-dropdown-sections {
+  opacity: 1;
+  transition-duration: 150ms;
+}
+
+.account-name {
+  padding: 10px;
+  border-bottom: 1px solid var(--color-white);
+}
+
+.sub-menu > * {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sign-out {
+  background: none;
+  border: none;
+  outline: none;
+  color: inherit;
+  cursor: pointer;
+}

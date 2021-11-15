@@ -28,6 +28,7 @@ h2 {
   height: 100vh;
   font-weight: normal;
   font-size: var(--font-size-medium);
+  background: #141414;
   /* display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
@@ -36,13 +37,17 @@ h2 {
     "footer"; */
 }
 
+/* .page {
+  background-color: #141414;
+} */
+
 .netflix-button {
   margin: 18px 3% 0;
   padding: 7px 17px;
   font-weight: 400;
   font-size: 16px;
   line-height: normal;
-  color: #fff;
+  color: var(--color-white);
   background-color: #e50914;
   border-radius: 3px;
   border: none;
