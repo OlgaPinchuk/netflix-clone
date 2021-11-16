@@ -11,6 +11,7 @@
     "label": "Episode number",
     "placeholder": "",
     "type": "number",
+    "min": 1,
     "required": true
   },
   {
@@ -18,6 +19,7 @@
     "label": "Season",
     "placeholder": "",
     "type": "number",
+    "min": 1,
     "required": true
   },
   {

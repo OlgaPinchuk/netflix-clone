@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body,
 html {
   height: 100%;
@@ -25,21 +29,30 @@ h2 {
 }
 
 .App {
-  height: 100vh;
+  /* height: 100vh; */
   font-weight: normal;
   font-size: var(--font-size-medium);
   background: #141414;
-  /* display: grid;
+  display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
     "header"
     "main"
-    "footer"; */
+    "footer";
 }
 
-/* .page {
-  background-color: #141414;
-} */
+.netflix-header {
+  grid-area: header;
+}
+
+.page {
+  grid-area: main;
+  margin-top: 60px;
+}
+
+.footer {
+  grid-area: footer;
+}
 
 .netflix-button {
   margin: 18px 3% 0;

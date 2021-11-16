@@ -9,7 +9,7 @@ import Checkbox from "components/Checkbox";
 import fields from "data/auth/fields-login.json";
 import { useUser } from "state/UserProvider";
 import { signIn } from "scripts/authentification";
-import { getDocument } from "scripts/fireStore";
+import { getDocument } from "scripts/firestore";
 
 import small from "assets/images/home-bg_small.jpg";
 import medium from "assets/images/home-bg_medium.jpg";

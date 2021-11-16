@@ -1,6 +1,6 @@
 export default function categoryReducer(state, action) {
   switch (action.type) {
-    case "READ_ALL_CATEGORIES":
+    case "READ_DATA":
       return readAllCategories(state, action);
     case "DELETE_CATEGORY":
       return deleteCategory(state, action);

@@ -1,6 +1,7 @@
 export const newTitle = {
   id: "",
   name: "",
+  videoId: "",
   type: "",
   description: "",
   thumbUrl: "",
@@ -14,6 +15,5 @@ export const newEpisode = {
   season: "",
   videoUrl: "",
   description: "",
-  thumbUrl: ""
+  thumbUrl: "",
 };
-

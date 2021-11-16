@@ -13,6 +13,7 @@
 @import url("./pages/admin.css");
 @import url("./pages/category-details.css");
 @import url("./pages/series-details.css");
+@import url("./pages/home.css");
 
 /* Components */
 @import url("./components/header.css");
@@ -22,3 +23,6 @@
 @import url("./components//admin-form.css");
 @import url("./components/search-bar.css");
 @import url("./components/secondary-navigation.css");
+@import url("./components/hero.css");
+@import url("./components/category-cards.css");
+@import url("./components/card.css");

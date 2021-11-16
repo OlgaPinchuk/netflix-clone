@@ -6,7 +6,7 @@ import InputFields from "components/InputFields";
 import InputImage from "components/InputImage";
 import Textarea from "components/Textarea";
 import fields from "data/admin/fields-episode.json";
-import { updateDocument, deleteDocumentField } from "scripts/fireStore";
+import { updateDocument, deleteDocumentField } from "scripts/firestore";
 import { useContent } from "state/ContentProvider";
 
 export default function EpisodeForm({ episode, series, state }) {
@@ -27,7 +27,11 @@ export default function EpisodeForm({ episode, series, state }) {
   const [errorMessage, setErrorMessage] = useState("");
 
   // Constants
-  const filename = form.name.toLowerCase().split(" ").join("-");
+  const filename = `season-${form.season}-${form.name
+    .toLowerCase()
+    .split(" ")
+    .join("-")}`;
+  console.log("filename", filename);
   const [editModeState] = state;
 
   // Methods
@@ -111,7 +115,7 @@ export default function EpisodeForm({ episode, series, state }) {
       />
       <InputImage
         label="Thumb"
-        id="thumbImage"
+        id="thumbUrl"
         state={[form, setForm]}
         filename={`series/thumbImage/${filename}`}
       />

@@ -1,3 +1,7 @@
+.category-details-page {
+  background-color: var(--color-white);
+}
+
 .back-button {
   position: absolute;
   left: 10px;

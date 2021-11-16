@@ -8,7 +8,7 @@ import { newTitle } from "./components/newContentItem";
 import ContentItemsTable from "./components/ContentItemsTable";
 import BackButton from "components/BackButton";
 import { useContent } from "state/ContentProvider";
-import { getCollection, deleteDocument } from "scripts/fireStore";
+import { getCollection, deleteDocument } from "scripts/firestore";
 
 export default function CategoryDetails({ match }) {
   // Global state
@@ -32,7 +32,7 @@ export default function CategoryDetails({ match }) {
     try {
       const titles = await getCollection(url);
       setTitles(titles);
-      titleDispatch({ type: "READ_TITLE", payload: titles });
+      titleDispatch({ type: "READ_DATA", payload: titles });
       setStatus(1);
     } catch {
       setStatus(2);

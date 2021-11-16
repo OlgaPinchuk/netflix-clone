@@ -7,12 +7,11 @@ export default function Textarea({ fieldName, legend, state }) {
         <b>{legend}</b>
       </legend>
       <textarea
+        defaultValue={form[fieldName]}
         onChange={(e) =>
           setForm({ ...form, ...{ [fieldName]: e.target.value } })
         }
-      >
-        {form[fieldName]}
-      </textarea>
+      ></textarea>
     </fieldset>
   );
 }

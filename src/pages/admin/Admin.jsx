@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 // Project files
 import { useContent } from "state/ContentProvider";
-import { getCollection } from "scripts/fireStore";
+import { getCollection } from "scripts/firestore";
 
 export default function Admin() {
   // Global state
@@ -18,14 +18,14 @@ export default function Admin() {
     try {
       const data = await getCollection(path);
 
-      categoryDispatch({ type: "READ_ALL_CATEGORIES", payload: data });
+      categoryDispatch({ type: "READ_DATA", payload: data });
       setStatus(1);
     } catch {
       setStatus(2);
     }
   }, []);
 
-  useEffect(() => fetchData("categories"), [fetchData]);
+useEffect(() => fetchData("categories"), [fetchData]);
 
   const CategoriesList = categories.map((item) => (
     <Link

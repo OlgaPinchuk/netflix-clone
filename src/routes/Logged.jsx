@@ -2,7 +2,7 @@ import { Route } from "react-router-dom";
 
 // Project files
 import { useUser } from "state/UserProvider";
-import Home from "pages/Home";
+import Home from "pages/home/Home";
 import Login from "pages/auth/Login";
 import SignUp from "pages/auth//SignUp";
 import Admin from "pages/admin/Admin";

@@ -1,11 +1,12 @@
 // Project files
 import ContentItemsTable from "./ContentItemsTable";
 import { useContent } from "state/ContentProvider";
-import { updateDocument, deleteDocumentField } from "scripts/fireStore";
+import { deleteDocumentField } from "scripts/firestore";
 
 export default function SeasonTable({ seriesData, onEdit }) {
   // Global state
   const { categories, setModifiedDate } = useContent();
+
   // Properties
   const [season, series] = seriesData;
   const [seasonNumber, content] = season;

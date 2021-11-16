@@ -1,0 +1,11 @@
+.hero {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  width: 100%;
+  height: 56.25vw;
+  z-index: 0;
+}

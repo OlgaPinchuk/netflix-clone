@@ -2,7 +2,7 @@ export default function titleReducer(state, action) {
   switch (action.type) {
     case "CREATE_TITLE":
       return createTitle(state, action);
-    case "READ_TITLE":
+    case "READ_DATA":
       return readTitle(state, action);
     case "UPDATE_TITLE":
       return updateTitle(state, action);
