@@ -19,8 +19,6 @@ export default function SecondaryNavigation() {
   // Methods
   async function onLogout() {
     const account = await logout();
-
-    console.log("Home.jsx account", account);
     setIsLogged(false);
     history.push("/");
   }

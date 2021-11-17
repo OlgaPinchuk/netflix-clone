@@ -31,7 +31,6 @@ export default function EpisodeForm({ episode, series, state }) {
     .toLowerCase()
     .split(" ")
     .join("-")}`;
-  console.log("filename", filename);
   const [editModeState] = state;
 
   // Methods

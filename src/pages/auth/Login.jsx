@@ -4,7 +4,6 @@ import { Link, useHistory } from "react-router-dom";
 
 // Project files
 import InputFields from "components/InputFields";
-import Footer from "components/Footer";
 import Checkbox from "components/Checkbox";
 import fields from "data/auth/fields-login.json";
 import { useUser } from "state/UserProvider";
@@ -19,7 +18,6 @@ export default function Login() {
   // Global state
   const { setUser, setIsLogged } = useUser();
   const history = useHistory();
-
 
   // Local state
   const [form, setForm] = useState({ email: "", password: "" });
@@ -45,7 +43,6 @@ export default function Login() {
   function onFailure(message) {
     setErrorMessage(message);
   }
-
 
   return (
     <main className="page login-page">
@@ -88,7 +85,6 @@ export default function Login() {
           </div>
         </div>
       </div>
-      <Footer />
     </main>
   );
 }

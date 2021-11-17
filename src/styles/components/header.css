@@ -101,3 +101,11 @@
   display: inline-block;
   vertical-align: middle;
 }
+
+
+/* Media queries */
+@media (max-width: 530px) {
+  .mode-unlogged .netflix-header {
+    padding: 0 5%;
+  }
+}

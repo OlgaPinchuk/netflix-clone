@@ -29,5 +29,5 @@ export default async function resizeImage(image, width = 100, height = 100) {
   canvas.height = newHeight;
   resizedContext.drawImage(resizedImage, 0, 0, newWidth, newHeight);
 
-  return canvas.toDataURL("image/png");
+  return canvas.toDataURL("image/jpeg");
 }

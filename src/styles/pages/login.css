@@ -2,8 +2,17 @@
   position: relative;
 }
 
+.login-page {
+  margin-top: 80px;
+  height: 90vh;
+}
+
 .login-wrapper {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   margin: 0;
   padding: 0;
   min-height: 100%;
@@ -27,17 +36,17 @@
 
 .login-form-wrapper {
   margin: 0 auto -236px;
-  padding: 60px 5%;
+  /* padding: 60px 5%; */
   max-width: 450px;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   color: #333;
   background-color: transparent;
   box-sizing: content-box;
 }
 
 .login-form-signup {
-  min-height: 660px;
-  padding: 60px 68px 40px;
+  /* min-height: 660px; */
+  padding: 60px 68px 90px;
   margin: 0;
   margin-bottom: 90px;
   background-color: rgba(0, 0, 0, 0.75);
@@ -133,21 +142,13 @@
 }
 
 .site-footer {
+  grid-area: footer;
   position: relative;
-  /* margin: 80px auto; */
-  padding-bottom: 20px;
-  min-width: 190px;
-  /* max-width: 1000px; */
-  width: 100%;
-  background: rgba(0, 0, 0, 0.75);
-  font-size: 16px;
-  color: var(--color-dim-grey);
-
   margin-top: 0;
   padding-bottom: 20px;
-  background: rgba(0, 0, 0, 0.75);
   min-width: 190px;
   width: 100%;
+  background: rgba(0, 0, 0, 0.75);
   font-size: 16px;
   color: var(--color-dim-grey);
 }
@@ -213,7 +214,7 @@
   text-decoration: underline;
 }
 
- .login-signup-now {
+.login-signup-now {
   color: var(--color-dim-grey);
   font-size: 16px;
   font-weight: 500;
@@ -224,4 +225,16 @@
   color: var(--color-white);
   font-size: 16px;
   font-weight: 500;
+}
+
+
+/* Media queries */
+@media (max-width: 530px) {
+  .mode-unlogged .netflix-header {
+    padding: 0 5%;
+  }
+  .login-form-signup {
+    width: 90vw;
+    margin: 0 auto;
+  }
 }

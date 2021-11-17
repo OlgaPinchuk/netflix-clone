@@ -11,7 +11,6 @@ export default function SeasonTable({ seriesData, onEdit }) {
   const [season, series] = seriesData;
   const [seasonNumber, content] = season;
   const episodes = getEpisodes(content);
-  // const [setEditMode, setCurrentEpisode] = state;
 
   // Methods
   function getEpisodes(data) {

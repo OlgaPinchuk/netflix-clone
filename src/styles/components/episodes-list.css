@@ -1,0 +1,90 @@
+.episodes-list {
+  padding: 16px 10px;
+}
+
+.episodes-control {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.episodes-control h2 {
+  font-weight: 700;
+  font-size: 24px;
+  margin-top: 48px;
+  margin-bottom: 20px;
+}
+
+.episodes-dropdown {
+  position: relative;
+  padding: 7px 16px;
+  min-width: 70px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-white);
+  background-color: rgb(36, 36, 36);
+  border: 1px solid rgb(77, 77, 77);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.episode-row {
+  position: relative;
+  min-height: 150px;
+  padding: 15px;
+  border-bottom: 1px solid #404040;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #141414;
+
+  display: flex;
+  align-items: center;
+}
+
+.episode-row:first-of-type {
+  border-top: 1px solid #404040;
+}
+
+.episode-number {
+  font-size: 1.5em;
+  color: #d2d2d2;
+  display: flex;
+  justify-content: center;
+  flex: 0 0 7%;
+}
+
+.episode-thumb {
+  position: relative;
+  overflow: hidden;
+  flex: 0 0 18%;
+  border-radius: 4px;
+}
+
+.episode-thumb img {
+  max-width: 100%;
+  display: block;
+}
+
+.episode-info {
+  min-height: 100%;
+  flex: 0 0 70%;
+  font-size: 16px;
+  text-align: left;
+}
+.episode-info h2 {
+  padding: 15px;
+  padding-bottom: 7px;
+  color: #fff;
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.episode-info p {
+  padding: 0 15px 15px;
+  margin: 0;
+  color: #d2d2d2;
+  font-size: 14px;
+  line-height: 20px;
+}

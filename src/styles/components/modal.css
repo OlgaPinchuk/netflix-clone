@@ -1,0 +1,35 @@
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+.modal-window {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  min-height: 69vh;
+  z-index: 100;
+}
+
+.modal-window .close-button {
+  position: absolute;
+  top: 5px;
+  right: 1px;
+  height: 38px;
+  width: 36px;
+  background: #181818;
+  border-radius: 28px;
+  cursor: pointer;
+  color: var(--color-white);
+  line-height: 36px;
+  font-size: 17px;
+  border: none;
+  z-index: 100;
+}
