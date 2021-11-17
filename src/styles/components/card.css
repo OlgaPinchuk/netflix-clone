@@ -3,35 +3,8 @@
   background: none;
   border: none;
   transform: scale(1);
-}
-
-.title-card:hover {
-  transform: scale(1.2);
-}
-
-.title-card .thumb {
-  width: 264px;
-
-  height: 170px;
-  object-fit: cover;
-  object-position: center;
-}
-
-.title-card {
-  background: none;
-  border: none;
   border-radius: 10px;
   transition: transform 100ms ease-out, border-radius 200ms ease-out;
-}
-.title-card .thumb {
-  width: 264px;
-
-  height: 170px;
-  border-radius: 10px;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  max-width: 100%;
 }
 
 .title-card:hover {
@@ -42,6 +15,7 @@
 .title-card:hover ~ .title-card {
   transform: translateX(25%);
 }
+
 .title-card .thumb {
   width: 264px;
   height: 170px;

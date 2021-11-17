@@ -13,7 +13,7 @@ export const newEpisode = {
   name: "",
   episodeNumber: "",
   season: "",
-  videoUrl: "",
+  videoId: "",
   description: "",
   thumbUrl: "",
 };

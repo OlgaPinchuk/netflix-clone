@@ -47,7 +47,7 @@ export default function App() {
         <Header />
         <Switch>{isLogged ? <Logged /> : <Unlogged />}</Switch>
       </BrowserRouter>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 .video-modal {
+  position: absolute;
   padding-bottom: 20px;
   background: #181818;
   color: white;
@@ -9,13 +10,11 @@
   line-height: 1.2;
 }
 
-/* .video {
-  margin: 0 auto;
-  display: flex;
-} */
-
 .preview {
   position: relative;
+
+  max-height: 400px;
+  overflow: hidden;
 }
 
 .preview-content {

@@ -19,7 +19,7 @@ export default function EpisodeForm({ episode, series, state }) {
     name: episode.name,
     episodeNumber: episode.episodeNumber,
     season: episode.season,
-    videoUrl: episode.videoUrl,
+    videoId: episode.videoId,
     description: episode.description,
     thumbUrl: episode.thumbUrl,
     seriesId: series.id,
@@ -43,7 +43,7 @@ export default function EpisodeForm({ episode, series, state }) {
     const editedEpisode = {
       id: String(Date.now()),
       name: form.name,
-      videoUrl: form.videoUrl,
+      videoId: form.videoId,
       season: form.season,
       description: form.description,
       thumbUrl: form.thumbUrl,

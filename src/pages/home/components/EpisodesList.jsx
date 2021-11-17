@@ -1,5 +1,6 @@
 // NPM packages
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 // Project files
 // import { isEmptyObject } from "scripts/utils/utils";
@@ -22,7 +23,7 @@ export default function EpisodesList({ title }) {
 
   const Episodes = episodes.map((episode, index) => {
     return (
-      <button className="episode-row" key={index}>
+      <Link className="episode-row" key={index} to={`/video/${episode.videoId}`}>
         <p className="episode-number">{index + 1}</p>
         <div className="episode-thumb">
           <img src={episode.thumbUrl} alt="" />
@@ -31,7 +32,7 @@ export default function EpisodesList({ title }) {
           <h2>{episode.name}</h2>
           <p>{episode.description}</p>
         </div>
-      </button>
+      </Link>
     );
   });
 
