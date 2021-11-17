@@ -1,0 +1,32 @@
+[
+  {
+    "key": "name",
+    "label": "Episode name",
+    "placeholder": "",
+    "type": "text",
+    "required": false
+  },
+  {
+    "key": "episodeNumber",
+    "label": "Episode number",
+    "placeholder": "",
+    "type": "number",
+    "min": 1,
+    "required": true
+  },
+  {
+    "key": "season",
+    "label": "Season",
+    "placeholder": "",
+    "type": "number",
+    "min": 1,
+    "required": true
+  },
+  {
+    "key": "videoId",
+    "label": "Link to video",
+    "placeholder": "",
+    "type": "text",
+    "required": true
+  }
+]

@@ -1,0 +1,7 @@
+export const SearchResults = () => {
+  return (
+    <div id="results" className="search-results">
+      <h1>Coming soon</h1>
+    </div>
+  );
+};

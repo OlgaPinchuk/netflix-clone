@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f3f3f3;
+  color: var(--color-dark);
+  font-size: 16px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+h1,
+h2 {
+  color: var(--color-white);
+}
+
+.App {
+  /* height: 100vh; */
+  font-weight: normal;
+  font-size: var(--font-size-medium);
+  background: #141414;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+
+.netflix-header {
+  grid-area: header;
+}
+
+.page {
+  grid-area: main;
+  margin-top: 60px;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.netflix-button {
+  margin: 18px 3% 0;
+  padding: 7px 17px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: normal;
+  color: var(--color-white);
+  background-color: #e50914;
+  border-radius: 3px;
+  border: none;
+}
+
+.no-content-message {
+  margin-top: 30px;
+  color: var(--color-black);
+  font-size: 25px;
+  text-align: center;
+}
