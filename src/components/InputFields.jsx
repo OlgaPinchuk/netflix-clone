@@ -1,4 +1,3 @@
-
 // Project files
 import InputField from "components/InputField";
 

@@ -1,12 +1,12 @@
 // NPM packages
 import { useRef } from "react";
 
-export default function InputField({ onChange, options, state}) {
-  const { key, label, placeholder, type, required, min} = options;
+export default function InputField({ onChange, options, state }) {
+  const { key, label, placeholder, type, required, min } = options;
 
   // Properties
   const inputReference = useRef(null);
-  
+
   return (
     <label>
       <input

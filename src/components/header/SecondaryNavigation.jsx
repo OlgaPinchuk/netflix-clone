@@ -8,7 +8,7 @@ import userIcon from "assets/images/icons/user-icon.png";
 import { useAuth } from "state/AuthProvider";
 import { logout } from "scripts/authentification";
 
-export default function SecondaryNavigation() {
+export default function SecondaryNavigation({ user }) {
   // Global state
   const { setIsLogged } = useAuth();
   const history = useHistory();
@@ -18,7 +18,7 @@ export default function SecondaryNavigation() {
 
   // Methods
   async function onLogout() {
-    const account = await logout();
+    await logout();
     setIsLogged(false);
     history.push("/");
   }
@@ -38,7 +38,7 @@ export default function SecondaryNavigation() {
         </button>
         {isOpened && (
           <div className="account-dropdown-sections">
-            <div className="account-name">Name</div>
+            <div className="account-name">{user.name}</div>
             <div className="sub-menu">
               <a className="sub-menu-link" href="#">
                 Help center

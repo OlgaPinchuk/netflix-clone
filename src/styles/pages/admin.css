@@ -1,5 +1,6 @@
 .admin-page {
   background: var(--color-white);
+  margin-top: 0;
 }
 
 .admin-header {
@@ -7,7 +8,7 @@
   padding: 35px 0;
   width: 100%;
   background: var(--color-black);
-  border-radius: 7px;
+  border-radius: 0 0 7px 7px;
   text-align: center;
   color: var(--color-white);
 }
@@ -25,7 +26,6 @@
 .admin-page .page-content {
   margin: 20px auto;
   width: 90vw;
-  max-width: 960px;
 }
 
 .admin-page h2 {
@@ -40,7 +40,7 @@
 }
 
 .admin-page .page-content .categories {
-  margin: 20px auto;
+  margin: 20px auto 120px;
   line-height: 1.5;
   text-transform: uppercase;
   width: 90vw;
@@ -52,7 +52,7 @@
 }
 
 .admin-page .page-content .category-card {
-  height: 150px;
+  height: 170px;
   background: var(--color-black);
   color: var(--color-red);
   border-radius: 7px;

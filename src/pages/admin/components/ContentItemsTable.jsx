@@ -20,9 +20,9 @@ export default function ContentItemsTable({ contentItems, onDelete, onEdit }) {
         <td>
           <img className="thumb" src={item.thumbUrl} alt={item.name} />
         </td>
-        <td>{item.name}</td>
+        <td><b>{item.name}</b></td>
         <td>{item.description}</td>
-        <td>
+        <td className="admin-buttons">
           <EditButton onClick={() => onEdit(item)} />
           <DeleteButton onClick={() => onDelete(itemToDelete)} />
           {item.type === "Series" && (
@@ -42,7 +42,7 @@ export default function ContentItemsTable({ contentItems, onDelete, onEdit }) {
         <tr>
           {isEpisode ? <th>Episode #</th> : null}
           <th>Thumb</th>
-          <th>Name</th>
+          <th className="item-name">Name</th>
           <th>Description</th>
           <th></th>
         </tr>

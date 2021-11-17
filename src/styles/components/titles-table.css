@@ -29,3 +29,30 @@
   object-fit: cover;
   object-position: center;
 }
+
+.admin-table .item-name {
+  width: 30%;
+}
+
+.admin-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-buttons button {
+  margin-bottom: 10px;
+  min-width: 66px;
+  min-height: 40px;
+  color: var(--color-white);
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+}
+
+.edit-button {
+  background: var(--color-orange);
+}
+
+.delete-button {
+  background: red;
+}

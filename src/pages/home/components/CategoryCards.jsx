@@ -15,7 +15,9 @@ export default function CategoryCards({ category, setModal }) {
     <>
       {status === 1 && (
         <div className="category-cards">
-          <h2 className="cards-header">{name}</h2>
+          <h2 id={name.toLowerCase()} className="cards-header">
+            {name}
+          </h2>
           <List Component={Card} list={data} setModal={setModal} />
         </div>
       )}

@@ -25,7 +25,7 @@ export default function Admin() {
     }
   }, []);
 
-useEffect(() => fetchData("categories"), [fetchData]);
+useEffect(() => fetchData("categories"), [fetchData]); // Need to refactor to useFetch and check data
 
   const CategoriesList = categories.map((item) => (
     <Link

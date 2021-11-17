@@ -28,7 +28,7 @@ export default function CategoryDetails({ match }) {
   const path = `categories/${currentCategory.id}/items`;
 
   // Methods
-  const fetchData = useCallback(async (url) => {
+  const fetchData = useCallback(async (url) => {  // Need to refactor to useFetch and check data
     try {
       const titles = await getCollection(url);
       setTitles(titles);

@@ -1,9 +1,7 @@
 .netflix-header {
-  height: 70px;
   width: 100%;
-  font-size: 0.75vw;
-  color: #fff;
-  border-bottom: transparent;
+  font-size: 10px;
+  color: var(--color-white);
 }
 
 .mode-unlogged .netflix-header {
@@ -25,10 +23,6 @@
 
 .pinning-header .pinning-header-container {
   position: relative;
-  left: 0;
-  right: 0;
-  top: 0;
-  background: transparent;
   z-index: 1;
 }
 
