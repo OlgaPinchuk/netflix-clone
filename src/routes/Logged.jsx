@@ -8,6 +8,7 @@ import SignUp from "pages/auth//SignUp";
 import Admin from "pages/admin/Admin";
 import CategoryDetails from "pages/admin/CategoryDetails";
 import SeriesDetails from "pages/admin//SeriesDetails";
+import VideoPage from "pages/video/VideoPage";
 
 export default function Logged() {
   const { user } = useUser();
@@ -15,23 +16,21 @@ export default function Logged() {
     <>
       {user.role === "admin" ? (
         <>
-          {/* Test */}
-          <Route exact path="/" component={Home} />
-
-          {/* <Route exact path="/" component={Admin} /> */}
-          <Route component={Admin} path="/admin" />
+          <Route exact path="/" component={Admin} />
+          <Route path="/admin" component={Admin} />
           <Route path="/admin-categories/:id" component={CategoryDetails} />
           <Route path="/series/:id" component={SeriesDetails} />
+          <Route path="/home" component={Home} />
         </>
       ) : (
         <>
           <Route exact path="/" component={Home} />
+          <Route exact path="/home" component={Home} />
         </>
       )}
-
+      <Route path="/video/:videoId" component={VideoPage} />
       <Route component={Login} path="/login" />
       <Route component={SignUp} path="/signup" />
-      
     </>
   );
 }

@@ -22,8 +22,8 @@ export default function Header() {
           </Link>
           {isLogged && (
             <>
-              <NavBar />
-              <SecondaryNavigation user={user}/>
+              <NavBar user={user}/>
+              <SecondaryNavigation userName={user.name}/>
             </>
           )}
         </div>

@@ -1,11 +1,60 @@
 .hero {
-  position: absolute;
-  left: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-row {
+  position: relative;
   top: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 40%;
+  margin-bottom: 20px;
+  background-color: #000;
+}
+
+.hero-image-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
   right: 0;
   bottom: 0;
   background-color: #000;
   width: 100%;
   height: 56.25vw;
+  max-height: 500px;
   z-index: 0;
+}
+
+.hero-image-wrapper img {
+  position: absolute;
+  background-position: center center;
+  background-size: cover;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.4s cubic-bezier(0.665, 0.235, 0.265, 0.8) 0s;
+}
+
+.hero .description {
+  position: absolute;
+  top: 0;
+  bottom: 10%;
+  left: 4%;
+  width: 36%;
+  color: var(--color-white);
+  font-size: 16px;
+  line-height: 1.3;
+  text-shadow: 2px 2px 4px rgb(0 0 0 / 45%);
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.hero .description h1 {
+  font-size: 40px;
 }

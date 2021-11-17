@@ -23,14 +23,19 @@ export default function Home() {
 
   return (
     <main className="page home-page">
-      <Hero />
-
       {status === 1 && (
-        <div className="user-content">
-          {categories.map((item) => (
-            <CategoryCards key={item.id} category={item} setModal={setModal} />
-          ))}
-        </div>
+        <>
+          <Hero />
+          <div className="user-content">
+            {categories.map((item) => (
+              <CategoryCards
+                key={item.id}
+                category={item}
+                setModal={setModal}
+              />
+            ))}
+          </div>
+        </>
       )}
 
       {/* Modal */}

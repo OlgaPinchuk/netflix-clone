@@ -8,7 +8,7 @@ import userIcon from "assets/images/icons/user-icon.png";
 import { useAuth } from "state/AuthProvider";
 import { logout } from "scripts/authentification";
 
-export default function SecondaryNavigation({ user }) {
+export default function SecondaryNavigation({ userName }) {
   // Global state
   const { setIsLogged } = useAuth();
   const history = useHistory();
@@ -38,7 +38,7 @@ export default function SecondaryNavigation({ user }) {
         </button>
         {isOpened && (
           <div className="account-dropdown-sections">
-            <div className="account-name">{user.name}</div>
+            <div className="account-name">{userName}</div>
             <div className="sub-menu">
               <a className="sub-menu-link" href="#">
                 Help center
