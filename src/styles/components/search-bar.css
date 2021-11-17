@@ -25,11 +25,11 @@
 }
 
 .search-bar.search-focused {
-    height: 34px;
-    width: 250px;
-    background: inherit;
-    border: 1px solid var(--color-white);
-    transition: width .5s ease;
+  height: 34px;
+  width: 250px;
+  background: inherit;
+  border: 1px solid var(--color-white);
+  transition: width 0.5s ease;
 }
 
 .search-bar.search-focused form {
@@ -45,7 +45,6 @@
   margin-left: 2px;
 }
 
-  
 .search-bar.search-focused input {
   display: block;
   padding-left: 40px;
@@ -56,4 +55,3 @@
   border: none;
   color: var(--color-white);
 }
-       

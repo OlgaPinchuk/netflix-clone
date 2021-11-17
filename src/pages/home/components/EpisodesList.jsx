@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 // Project files
-// import { isEmptyObject } from "scripts/utils/utils";
 import SeasonsSelect from "./SeasonsSelect";
 
 export default function EpisodesList({ title }) {
@@ -23,7 +22,11 @@ export default function EpisodesList({ title }) {
 
   const Episodes = episodes.map((episode, index) => {
     return (
-      <Link className="episode-row" key={index} to={`/video/${episode.videoId}`}>
+      <Link
+        className="episode-row"
+        key={index}
+        to={`/video/${episode.videoId}`}
+      >
         <p className="episode-number">{index + 1}</p>
         <div className="episode-thumb">
           <img src={episode.thumbUrl} alt="" />

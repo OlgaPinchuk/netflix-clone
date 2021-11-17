@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 
 // Project files
 import InputFields from "components/InputFields";
-// import Footer from "components/Footer";
 import Checkbox from "components/Checkbox";
 import fields from "data/auth/fields-signup.json";
 import { createAccount } from "scripts/authentification";
@@ -37,7 +36,7 @@ export default function SignUp() {
   }
 
   async function onSuccess(uid) {
-    const newUser = { name: `${form.firstName} ${form.surname}`};
+    const newUser = { name: `${form.firstName} ${form.surname}` };
 
     await createDocumentWithId("users", uid, newUser);
     setUser(newUser);

@@ -75,7 +75,7 @@
 .episode-info h2 {
   padding: 15px;
   padding-bottom: 7px;
-  color: #fff;
+  color: var(--color-white);
 
   font-size: 16px;
   font-weight: 700;

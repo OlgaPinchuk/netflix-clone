@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 
 // Project files
 import InputFields from "components/InputFields";
-import Footer from "components/Footer";
 import fields from "data/auth/fields-password-recovery.json";
 import { recoverPassword } from "scripts/authentification";
 
@@ -14,7 +13,6 @@ export default function PasswordRecovery() {
 
   // Local state
   const [form, setForm] = useState({ email: "" });
-  const [error, setError] = useState({});
   const [message, setMessage] = useState("");
 
   // Methods

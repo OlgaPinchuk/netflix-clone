@@ -48,7 +48,6 @@
   vertical-align: middle;
   fill: var(--color-red);
   display: inline-block;
-  /* line-height: 90px; */
 }
 
 .netflix-header .svg-logo img {
@@ -71,7 +70,6 @@
 
 .nav-bar .primary-navigation a {
   height: 100%;
-  /* font-weight: 700; */
   display: flex;
   align-items: center;
 }
@@ -95,7 +93,6 @@
   display: inline-block;
   vertical-align: middle;
 }
-
 
 /* Media queries */
 @media (max-width: 530px) {

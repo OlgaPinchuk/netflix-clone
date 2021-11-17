@@ -36,16 +36,13 @@
 
 .login-form-wrapper {
   margin: 0 auto -236px;
-  /* padding: 60px 5%; */
   max-width: 450px;
-  /* min-height: 100vh; */
   color: #333;
   background-color: transparent;
   box-sizing: content-box;
 }
 
 .login-form-signup {
-  /* min-height: 660px; */
   padding: 60px 68px 90px;
   margin: 0;
   margin-bottom: 90px;

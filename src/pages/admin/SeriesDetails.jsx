@@ -17,7 +17,7 @@ export default function SeriesDetails({ match }) {
   const currentSeries = titles.find((item) => item.id === match.params.id);
 
   // Local state
-  const [seasons, setSeasons] = useState(currentSeries.seasons);
+  const [seasons] = useState(currentSeries.seasons);
   const [currentEpisode, setCurrentEpisode] = useState(newEpisode);
   const [editMode, setEditMode] = useState(false);
 

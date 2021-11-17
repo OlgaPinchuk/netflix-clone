@@ -1,9 +1,9 @@
 // NPM package
 import { createContext, useContext, useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/auth"; 
+import { onAuthStateChanged } from "firebase/auth";
 
 // Project files
-import { authInstance } from "scripts/firebase"; 
+import { authInstance } from "scripts/firebase";
 
 // Properties
 const AuthContext = createContext(null);

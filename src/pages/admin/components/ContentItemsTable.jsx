@@ -20,7 +20,9 @@ export default function ContentItemsTable({ contentItems, onDelete, onEdit }) {
         <td>
           <img className="thumb" src={item.thumbUrl} alt={item.name} />
         </td>
-        <td><b>{item.name}</b></td>
+        <td>
+          <b>{item.name}</b>
+        </td>
         <td>{item.description}</td>
         <td className="admin-buttons">
           <EditButton onClick={() => onEdit(item)} />
