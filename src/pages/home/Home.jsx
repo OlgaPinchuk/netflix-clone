@@ -21,8 +21,16 @@ export default function Home() {
   // Data fetching
   const { status } = useFetch(categoriesPath, categoryDispatch);
 
+  // Good refactoring of the useFetch +5
+
+  // safeguards
+  if (status === 0) return <p>loading</p>;
+  if (status === 2) return <p>error</p>;
+
   return (
     <main className="page home-page">
+      {/* But here you could have done some polishing see example above  -1 */}
+      {/* This would remove the nesting and the need for the <> */}
       {status === 1 && (
         <>
           <Hero />

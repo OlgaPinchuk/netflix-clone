@@ -14,6 +14,7 @@ import small from "assets/images/home-bg_small.jpg";
 import medium from "assets/images/home-bg_medium.jpg";
 import large from "assets/images/home-bg_large.jpg";
 
+// Function length -1 (the component is too long)
 export default function Login() {
   // Global state
   const { setUser, setIsLogged } = useUser();
@@ -58,6 +59,9 @@ export default function Login() {
       </div>
 
       {/* Form */}
+      {/* Nesting -1 */}
+      {/* Why do we have 3 divs in a row, this is connected to the black border mentioned on the design and functionality category */}
+      {/* This is why this component is 50+ lines long. Please take the time to refactor the JSX and CSS to make this one shorter */}
       <div className="login-form-wrapper">
         <div className="login-form-signup">
           <div className="login-form-main">

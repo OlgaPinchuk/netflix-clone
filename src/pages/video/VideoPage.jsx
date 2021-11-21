@@ -7,7 +7,7 @@ export default function VideoPage() {
   const { videoId } = useParams();
 
   const opts = {
-    height: "600",
+    height: "200",
     width: "100%",
     playerVars: {
       autoplay: 1,

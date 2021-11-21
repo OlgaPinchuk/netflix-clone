@@ -43,6 +43,8 @@ export default function App() {
     <div className={`App mode-${isLogged ? "logged" : "unlogged"}`}>
       {status === 0 && <p>Loading...</p>}
       {status === 2 && <p>Error...</p>}
+      {/* Bug -1 */}
+      {/* The BrowserRouter is loading regardless of the status of the user fetching, if so, then why have a loading at all */}
       <BrowserRouter>
         <Header />
         <Switch>{isLogged ? <Logged /> : <Unlogged />}</Switch>

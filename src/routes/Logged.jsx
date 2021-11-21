@@ -12,6 +12,10 @@ import VideoPage from "pages/video/VideoPage";
 
 export default function Logged() {
   const { user } = useUser();
+
+  // Nesting -1
+  // This nesting would be prone to errors the more routes you have.
+  // You can create a component called "AdminRoutes" and "UserRoutes" to keep then separate
   return (
     <>
       {user.role === "admin" ? (

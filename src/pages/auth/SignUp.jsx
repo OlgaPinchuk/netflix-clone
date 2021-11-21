@@ -22,7 +22,7 @@ export default function SignUp() {
     email: "",
     password: "",
   });
-  // const [errors, setErrors] = useState({});
+  // const [errors, setErrors] = useState({}); // No comments in production -1
 
   const [errorMessage, setErrorMessage] = useState("");
 
