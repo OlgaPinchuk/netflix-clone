@@ -1,5 +1,7 @@
 export default function categoryReducer(state, action) {
   switch (action.type) {
+    case "CREATE_CATEGORY":
+      return createCategory(state, action);
     case "READ_DATA":
       return readAllCategories(state, action);
     case "DELETE_CATEGORY":
@@ -7,6 +9,14 @@ export default function categoryReducer(state, action) {
     default:
       throw new Error(`No action type found ${action.type}`);
   }
+}
+
+function createCategory(state, action) {
+  const { payload } = action;
+  if (payload !== null) {
+    return [...state, payload];
+  }
+  return state;
 }
 
 function readAllCategories(state, action) {

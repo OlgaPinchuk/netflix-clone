@@ -1,13 +1,16 @@
-export default function SeasonsSelect({ data, onChange }) {
+export default function SeasonsSelect({ seasons, onChange }) {
+  // Properties
+  const sortedSeasons = seasons.sort((a, b) => a.seasonNumber - b.seasonNumber);
+  
   return (
     <select
       id="select"
       className="episodes-dropdown"
-      onChange={(e) => onChange(e.target.value)}
+      onChange={(e) => onChange(parseInt(e.target.value))}
     >
-      {Object.keys(data).map((item) => (
-        <option key={item} value={item}>
-          Season {item}
+      {sortedSeasons.map((item) => (
+        <option key={item.seasonNumber} value={item.seasonNumber}>
+          Season {item.seasonNumber}
         </option>
       ))}
     </select>

@@ -5,21 +5,22 @@ import { Link } from "react-router-dom";
 // Project files
 import SeasonsSelect from "./SeasonsSelect";
 
-export default function EpisodesList({ title }) {
+export default function EpisodesList({ seasons }) {
   // Local state
   const [season, setSeason] = useState(1);
-  const [episodes, setEpisodes] = useState(getSeasonEpisodes(season));
+  const [episodes, setEpisodes] = useState(getEpisodes(season));
 
   // Methods
+  function getEpisodes(newSeason) {
+    return seasons.find((item) => item.seasonNumber === newSeason)?.episodes;
+  }
+
   function changeSeason(newSeason) {
     setSeason(newSeason);
-    setEpisodes(getSeasonEpisodes(newSeason));
+    setEpisodes(getEpisodes(newSeason));
   }
 
-  function getSeasonEpisodes(newSeason) {
-    return Object.values(title.seasons[newSeason].episodes);
-  }
-
+  // Components
   const Episodes = episodes.map((episode, index) => {
     return (
       <Link
@@ -27,9 +28,9 @@ export default function EpisodesList({ title }) {
         key={index}
         to={`/video/${episode.videoId}`}
       >
-        <p className="episode-number">{index + 1}</p>
+        <p className="episode-number">{episode.number}</p>
         <div className="episode-thumb">
-          <img src={episode.thumbUrl} alt="" />
+          <img src={episode.thumbUrl} alt="Episode thumbnail" />
         </div>
         <div className="episode-info">
           <h2>{episode.name}</h2>
@@ -43,7 +44,7 @@ export default function EpisodesList({ title }) {
     <div className="episodes-list">
       <div className="episodes-control">
         <h2>Episodes</h2>
-        <SeasonsSelect data={title.seasons} onChange={changeSeason} />
+        <SeasonsSelect seasons={seasons} onChange={changeSeason} />
       </div>
       {Episodes}
     </div>
