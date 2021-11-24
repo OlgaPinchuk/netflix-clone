@@ -1,5 +1,5 @@
 // NPM packages
-import { useState, useMemo } from "react";
+import { useState } from "react";
 
 // Project files
 import Modal from "components/Modal";
@@ -10,34 +10,31 @@ import useFetch from "hooks/useFetch";
 
 export default function Home() {
   // Global state
-  const { titles, titleDispatch } = useContent();
+  const { categories, categoryDispatch } = useContent();
 
   // Local state
   const [modal, setModal] = useState(null);
 
+  // Properties
+  const categoriesPath = "categories";
+
   // Data fetching
-  const { status } = useFetch("titles", titleDispatch);
-
-  // Derived state
-  const categories = useMemo(
-    () => [...new Set(titles.map((item) => item.type))],
-    [titles]
-  );
-
-  // Components
-  const Categories = categories.map((item, index) => (
-    <CategoryCards key={index} category={item} setModal={setModal} />
-  ));
+  const { status } = useFetch(categoriesPath, categoryDispatch);
 
   return (
     <main className="page home-page">
-      {/* TO-DO: move Loading and Error to components */}
-      {status === 0 && <p>Loading...</p>}
-      {status === 2 && <p>Error...</p>}
       {status === 1 && (
         <>
           <Hero />
-          <div className="user-content">{Categories}</div>
+          <div className="user-content">
+            {categories.map((item) => (
+              <CategoryCards
+                key={item.id}
+                category={item}
+                setModal={setModal}
+              />
+            ))}
+          </div>
         </>
       )}
 

@@ -1,19 +1,26 @@
 // Project files
-import { useContent } from "state/ContentProvider";
+import useFetch from "hooks/useFetch";
 import List from "components/List";
 import Card from "./Card";
 
 export default function CategoryCards({ category, setModal }) {
-  // Global state
-  const { titles } = useContent();
+  // Properties
+  const { name, id } = category;
+  const path = `categories/${id}/items`;
 
-  // Derived state
-  const categoryItems = titles.filter((items) => items.type === category);
+  //Fetching data
+  const { status, data } = useFetch(path);
 
   return (
-    <div className="category-cards">
-      <h2 className="cards-header">{category}</h2>
-      <List Component={Card} list={categoryItems} setModal={setModal} />
-    </div>
+    <>
+      {status === 1 && (
+        <div className="category-cards">
+          <h2 id={name.toLowerCase()} className="cards-header">
+            {name}
+          </h2>
+          <List Component={Card} list={data} setModal={setModal} />
+        </div>
+      )}
+    </>
   );
 }

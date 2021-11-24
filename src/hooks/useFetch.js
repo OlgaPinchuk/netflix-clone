@@ -7,18 +7,21 @@ export default function useFetch(path, dispatch) {
   const [data, setData] = useState([]);
 
   //Methods
-  const fetchData = useCallback(async (path) => {
-    try {
-      const data = await getCollection(path);
-      if (dispatch) {
-        dispatch({ type: "READ_DATA", payload: data });
+  const fetchData = useCallback(
+    async (path) => {
+      try {
+        const data = await getCollection(path);
+        if (dispatch) {
+          dispatch({ type: "READ_DATA", payload: data });
+        }
+        setStatus(1);
+        setData(data);
+      } catch {
+        setStatus(2);
       }
-      setStatus(1);
-      setData(data);
-    } catch {
-      setStatus(2);
-    }
-  }, []);
+    },
+    [dispatch]
+  );
 
   useEffect(() => fetchData(path), [fetchData]);
 
