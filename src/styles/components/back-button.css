@@ -1,0 +1,7 @@
+.back-button {
+  margin: var(--space-medium) 0;
+  font-size: var(--font-size-big);
+  color: var(--color-white);
+  background: none;
+  border: none;
+}

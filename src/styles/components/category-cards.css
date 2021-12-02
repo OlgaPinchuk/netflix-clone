@@ -1,0 +1,26 @@
+.category-cards {
+  position: relative;
+  margin: 3vw 0;
+  padding: 0;
+  outline: 0;
+  width: 90vw;
+
+  overflow: hidden;
+  overflow-x: scroll;
+}
+
+.cards-header {
+  margin: 0 12px 8px 12px;
+  color: #e5e5e5;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 1.3;
+  font-size: 20px;
+}
+
+.category-cards ul {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 1200px;
+  display: flex;
+}

@@ -1,0 +1,10 @@
+.category-details-page {
+  margin-top: 0;
+  background-color: var(--color-white);
+}
+
+.back-button {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}

@@ -1,0 +1,237 @@
+.login-page > * {
+  position: relative;
+}
+
+.login-page {
+  margin-top: 80px;
+  height: 90vh;
+}
+
+.login-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  z-index: 0;
+}
+
+.login-wrapper-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.login-page .bg-image {
+  min-height: 100%;
+  min-width: 100%;
+  filter: brightness(0.5);
+}
+
+.login-form-wrapper {
+  margin: 0 auto -236px;
+  max-width: 450px;
+  color: #333;
+  background-color: transparent;
+  box-sizing: content-box;
+}
+
+.login-form-signup {
+  padding: 60px 68px 90px;
+  margin: 0;
+  margin-bottom: 90px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 4px;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  width: 100%;
+  min-width: 380px;
+}
+
+.login-form-main {
+  flex-grow: 1;
+}
+
+.login-page-title {
+  margin-bottom: 28px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.login-form {
+  margin-bottom: 0;
+}
+
+.login-form fieldset {
+  border: none;
+}
+
+.login-form label {
+  margin-bottom: 20px;
+  position: relative;
+  display: block;
+}
+
+.login-form label span {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  color: #8c8c8c;
+  font-size: 14px;
+  transition: font-size 0.1s ease, top 0.1s ease, transform 0.1s ease;
+  transform: translateY(-50%);
+}
+
+.login-form label .active {
+  top: 4px;
+  font-size: 11px;
+  transform: translateY(0);
+}
+
+.login-page input[type="email"],
+.login-page input[type="password"] {
+  padding: 5px 20px 0;
+  width: 100%;
+  height: 50px;
+  color: var(--color-white);
+  line-height: 50px;
+  background: var(--color-dark);
+  border: 0;
+  border-radius: 4px;
+  outline: none;
+}
+
+.login-form input:focus {
+  background: #454545;
+  border-bottom: 2px solid var(--color-orange);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.input-error {
+  color: var(--color-orange);
+  margin-bottom: -6px;
+  padding: 6px 3px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.login-button {
+  margin: 24px 0 12px;
+  padding: 16px;
+  width: 100%;
+  max-width: 100%;
+  color: var(--color-white);
+  background: var(--color-red);
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 700;
+  outline: none;
+  border: none;
+}
+
+.site-footer {
+  grid-area: footer;
+  position: relative;
+  margin-top: 0;
+  padding-bottom: 20px;
+  min-width: 190px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  font-size: 16px;
+  color: var(--color-dim-grey);
+}
+
+.login-form-help {
+  min-height: 16px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  position: absolute;
+  top: -8px;
+  left: 0;
+  opacity: 0;
+}
+.login-form .login-form-help label {
+  margin-bottom: 0;
+}
+
+.login-form .login-form-help label span {
+  position: relative;
+}
+
+.custom-checkbox span::before {
+  content: "";
+  position: absolute;
+  padding: 0;
+  top: -1px;
+  left: -20px;
+  width: 16px;
+  height: 16px;
+
+  background: #737373;
+  border-radius: 2px;
+  border: 0;
+
+  display: block;
+}
+
+.custom-checkbox input:checked + span::after {
+  content: "\f00c";
+  position: absolute;
+  color: #000;
+  font-size: 14px;
+  left: -19px;
+  top: 1px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 700;
+}
+
+.help {
+  cursor: pointer;
+  color: #b3b3b3;
+  font-size: 14px;
+  font-weight: 500;
+  padding-top: 2px;
+}
+
+.help:hover {
+  text-decoration: underline;
+}
+
+.login-signup-now {
+  color: var(--color-dim-grey);
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 35px;
+}
+
+.login-signup-now a {
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+
+/* Media queries */
+@media (max-width: 530px) {
+  .mode-unlogged .netflix-header {
+    padding: 0 5%;
+  }
+  .login-form-signup {
+    width: 90vw;
+    margin: 0 auto;
+  }
+}

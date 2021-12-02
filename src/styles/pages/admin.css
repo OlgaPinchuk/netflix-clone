@@ -1,0 +1,64 @@
+.admin-page {
+  background: var(--color-white);
+  margin-top: 0;
+}
+
+.admin-header {
+ position: relative;
+  padding: 35px 0;
+  width: 100%;
+  background: var(--color-black);
+  border-radius: 0 0 7px 7px;
+  text-align: center;
+  color: var(--color-white);
+}
+
+.admin-header h1 {
+  margin: 10px auto;
+  color: var(--color-red);
+  font-size: 35px;
+}
+
+.admin-header p {
+  line-height: 1.5;
+}
+
+.admin-page .page-content {
+  margin: 20px auto;
+  width: 90vw;
+}
+
+.admin-page h2 {
+  color: var(--color-dark);
+  font-size: 26px;
+  text-align: center;
+}
+
+.admin-page .page-content .instruction {
+  margin: 10px 0 25px;
+  text-align: center;
+}
+
+.admin-page .page-content .categories {
+  margin: 20px auto 120px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  width: 90vw;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+  justify-content: stretch;
+  grid-gap: 10px;
+}
+
+.admin-page .page-content .category-card {
+  height: 170px;
+  background: var(--color-black);
+  color: var(--color-red);
+  border-radius: 7px;
+  font-size: 20px;
+  display: grid;
+  grid-gap: 10px;
+  justify-items: center;
+  align-items: center;
+}
