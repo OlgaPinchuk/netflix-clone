@@ -27,7 +27,7 @@ export default function ContentItemsTable({ contentItems, onDelete, onEdit }) {
         <td className="admin-buttons">
           <EditButton onClick={() => onEdit(item)} />
           <DeleteButton onClick={() => onDelete(itemToDelete)} />
-          {item.type === "Series" && (
+          {item.type === "series" && (
             <Link to={`/series/${item.id}`}>View seasons</Link>
           )}
         </td>

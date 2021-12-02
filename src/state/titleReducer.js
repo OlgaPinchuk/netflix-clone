@@ -33,9 +33,12 @@ function updateTitle(state, action) {
   const { payload } = action;
   const newState = [...state];
   const newIndex = newState.findIndex((item) => item.id === payload.id);
+  console.log("newIndex", newIndex);
+  console.log("payload", payload);
   if (newIndex !== -1) {
     newState[newIndex] = { ...payload };
   }
+  console.log("newState", newState);
   return newState;
 }
 

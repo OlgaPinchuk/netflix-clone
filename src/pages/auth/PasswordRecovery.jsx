@@ -21,8 +21,8 @@ export default function PasswordRecovery() {
     setForm({ ...form, ...field });
   }
 
-  async function onSubmit(e) {
-    e.preventDefault();
+  async function onSubmit(event) {
+    event.preventDefault();
     setMessage("");
     const account = await recoverPassword(form.email);
     account.isReset ? onSuccess(account.payload) : onFailure(account.payload);

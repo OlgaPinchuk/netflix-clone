@@ -8,7 +8,7 @@ import SeasonTable from "./components/SeasonTable";
 import BackButton from "components/BackButton";
 import { newEpisode } from "./components/newContentItem";
 import { useContent } from "state/ContentProvider";
-import { isEmptyObject } from "scripts/utils/utils";
+import useFetch from "hooks/useFetch";
 
 export default function SeriesDetails({ match }) {
   // Global state
@@ -17,18 +17,22 @@ export default function SeriesDetails({ match }) {
   const currentSeries = titles.find((item) => item.id === match.params.id);
 
   // Local state
-  const [seasons] = useState(currentSeries.seasons);
   const [currentEpisode, setCurrentEpisode] = useState(newEpisode);
   const [editMode, setEditMode] = useState(false);
 
+  //Fetched seasons
+  const { data: seasons } = useFetch(`titles/${currentSeries.id}/seasons`);
+
   // Components
-  const Seasons = Object.entries(seasons).map((season, index) => (
-    <SeasonTable
-      key={index}
-      seriesData={[season, currentSeries]}
-      onEdit={onEdit}
-    />
-  ));
+  const Seasons = seasons
+    .sort((a, b) => a.seasonNumber - b.seasonNumber)
+    .map((season) => (
+      <SeasonTable
+        key={season.id}
+        seriesData={[season, currentSeries.id]}
+        onEdit={onEdit}
+      />
+    ));
 
   // Methods
   function onAdd() {
@@ -57,7 +61,7 @@ export default function SeriesDetails({ match }) {
       </header>
       <div className="page-content">
         {!editMode ? (
-          isEmptyObject(currentSeries.seasons) ? (
+          seasons.length === 0 ? (
             <h2 className="no-content-message">No content yet</h2>
           ) : (
             <>{Seasons}</>

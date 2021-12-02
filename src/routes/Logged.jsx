@@ -18,7 +18,7 @@ export default function Logged() {
         <>
           <Route exact path="/" component={Admin} />
           <Route path="/admin" component={Admin} />
-          <Route path="/admin-categories/:id" component={CategoryDetails} />
+          <Route path="/admin-categories/:name" component={CategoryDetails} />
           <Route path="/series/:id" component={SeriesDetails} />
           <Route path="/home" component={Home} />
         </>

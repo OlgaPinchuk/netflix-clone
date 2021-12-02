@@ -4,27 +4,20 @@ import { useContent } from "state/ContentProvider";
 import { deleteDocumentField } from "scripts/firestore";
 
 export default function SeasonTable({ seriesData, onEdit }) {
+
   // Global state
   const { categories, setModifiedDate } = useContent();
 
   // Properties
-  const [season, series] = seriesData;
-  const [seasonNumber, content] = season;
-  const episodes = getEpisodes(content);
+  const [season, seriesId] = seriesData;
+  const{seasonNumber, episodes} = season;
 
   // Methods
-  function getEpisodes(data) {
-    let episodes = [];
-    for (const [key, value] of Object.entries(data.episodes)) {
-      episodes.push({ ...value, episodeNumber: key });
-    }
-    return episodes;
-  }
 
   async function onDelete(episodeId) {
     if (window.confirm("Are you sure you want to delete an episode?")) {
       const seriesCategoryId = categories.find(
-        (item) => item.name === "Series"
+        (item) => item.name === "series"
       ).id;
       const path = `categories/${seriesCategoryId}/items`;
       const fieldToDelete =
@@ -32,7 +25,7 @@ export default function SeasonTable({ seriesData, onEdit }) {
           ? `seasons.${seasonNumber}.episodes.${episodeId}`
           : `seasons.${seasonNumber}`;
 
-      await deleteDocumentField(path, series.id, fieldToDelete);
+      await deleteDocumentField(path, seriesId, fieldToDelete);
 
       setModifiedDate(new Date());
     }

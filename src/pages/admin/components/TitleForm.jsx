@@ -10,6 +10,7 @@ import { createDocument, updateDocument } from "scripts/firestore";
 import { useContent } from "state/ContentProvider";
 
 export default function TitleForm({ title, category, state }) {
+  
   // Global state
   const { titleDispatch, setModifiedDate } = useContent();
 
@@ -29,11 +30,11 @@ export default function TitleForm({ title, category, state }) {
   const [editModeState] = state;
 
   // Methods
-  async function onPublish(event) {
+   async function onPublish(event) {
     event.preventDefault();
-    const path = `categories/${category.id}/items`;
+    const path = "titles";
     const editedTitle = {
-      type: category.name,
+      type: category,
       name: form.name,
       videoId: form.videoId || "",
       thumbUrl: form.thumbImage,
@@ -41,7 +42,7 @@ export default function TitleForm({ title, category, state }) {
       description: form.description,
     };
 
-    if (category.name === "Series" && title.name === "")
+    if (category === "series" && title.name === "")
       editedTitle.seasons = {};
 
     if (title.id !== "") await updateDocument(path, title.id, editedTitle);
@@ -52,10 +53,10 @@ export default function TitleForm({ title, category, state }) {
         payload: { id: newId, ...editedTitle },
       });
     }
-
+    console.log("test", { id: title.id, editedTitle });
     titleDispatch({
       type: "UPDATE_TITLE",
-      payload: { id: title.id, data: editedTitle },
+      payload: { id: title.id, ...editedTitle },
     });
     editModeState(false);
     setModifiedDate(new Date());

@@ -1,5 +1,5 @@
 // NPM packages
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 // Project files
 import Modal from "components/Modal";
