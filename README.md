@@ -5,7 +5,7 @@
 This is the copy of Netflix which is cretaed for learning purpose.
 
 
-[Visit the website](https://netflix-clone-59219.web.app/)
+[Visit the website](https://netnix.web.app/)
 
 Here are the credentials for admin panel:
 
